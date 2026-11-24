@@ -5,7 +5,9 @@ import {
   Calendar, 
   Award, 
   CheckCircle2, 
-  FileCheck2
+  FileCheck2,
+  FileText,
+  ArrowUpRight
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 
@@ -29,11 +31,11 @@ export const CertificationDetail: React.FC = () => {
             The requested certification record could not be found.
           </p>
           <button
-            onClick={() => navigate('/#credentials')}
-            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate('/certifications')}
+            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer font-mono"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Return to Portfolio</span>
+            <span>Return to Registry</span>
           </button>
         </div>
       </main>
@@ -47,19 +49,19 @@ export const CertificationDetail: React.FC = () => {
         {/* Back Link */}
         <div>
           <button
-            onClick={() => navigate('/#credentials')}
+            onClick={() => navigate('/certifications')}
             className="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2 cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>BACK TO CREDENTIALS</span>
+            <span>BACK TO CREDENTIAL REGISTRY</span>
           </button>
         </div>
 
         {/* Header Block */}
         <header className="space-y-4 pb-8 border-b border-[var(--border-color)]">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono px-2 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent)] font-semibold">
-              {cert.badgeText}
+            <span className="text-xs font-mono px-2 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent)] font-semibold uppercase">
+              {cert.category}
             </span>
           </div>
 
@@ -75,7 +77,7 @@ export const CertificationDetail: React.FC = () => {
             <span>•</span>
             <span className="flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5" />
-              {cert.date}
+              {cert.issued}
             </span>
           </div>
         </header>
@@ -89,13 +91,27 @@ export const CertificationDetail: React.FC = () => {
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-            {cert.verificationNote}
+            Verified course or professional accreditation on record.
           </p>
           {cert.credentialId && (
             <div className="pt-2">
               <span className="text-xs font-mono px-3 py-1.5 rounded bg-[var(--bg-page)] border border-[var(--border-color)] text-[var(--text-primary)] inline-block">
                 Credential ID: {cert.credentialId}
               </span>
+            </div>
+          )}
+          {cert.certificateFile && (
+            <div className="pt-2">
+              <a
+                href={cert.certificateFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-mono text-xs font-semibold"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>Open Certificate Document (PDF)</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           )}
         </section>
@@ -116,7 +132,7 @@ export const CertificationDetail: React.FC = () => {
             CORE COMPETENCIES COVERED
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {cert.skillsCovered.map((s, idx) => (
+            {cert.skills.map((s, idx) => (
               <div
                 key={idx}
                 className="p-3.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] flex items-center gap-2.5 text-xs text-[var(--text-secondary)]"

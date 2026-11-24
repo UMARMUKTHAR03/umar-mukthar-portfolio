@@ -6,6 +6,7 @@ export interface Project {
   category: 'AI / ML' | 'Full-Stack' | 'Computer Vision' | 'Python & Systems';
   featured: boolean;
   image?: string;
+  architectureImage?: string;
   metrics: { label: string; value: string; condition?: string }[];
   tags: string[];
   githubUrl: string;
@@ -23,6 +24,7 @@ export interface Project {
 export interface Experience {
   id: string;
   company: string;
+  program?: string;
   role: string;
   period: string;
   duration: string;
@@ -31,23 +33,20 @@ export interface Experience {
   summary: string;
   responsibilities: string[];
   techStack: string[];
-  projectsCompleted: string[];
-  skillsGained: string[];
-  achievements: string[];
-  certificateProofNote?: string;
+  certificateFile?: string;
 }
 
 export interface Certification {
   id: string;
   title: string;
   issuer: string;
-  date: string;
-  badgeText: string;
+  issued: string;
+  category: string;
   credentialId?: string;
   credentialUrl?: string;
-  skillsCovered: string[];
   description: string;
-  verificationNote: string;
+  skills: string[];
+  certificateFile?: string;
 }
 
 export interface CodingProfile {
@@ -62,19 +61,19 @@ export interface CodingProfile {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Umar Mukthar",
-    title: "AI & Machine Learning Engineer | Python Developer | Full-Stack Developer",
+    title: "AI & Machine Learning Engineer | Full-Stack Developer",
     shortBio:
-      "Artificial Intelligence & Machine Learning engineer passionate about neural sequence modeling, deep learning architectures, retrieval-augmented systems, and scalable full-stack applications. Transforming real-world engineering challenges into high-performance software through Python, PyTorch, and modern web technologies.",
+      "Fresh Artificial Intelligence and Machine Learning graduate (2026) from Chennai Institute of Technology with skills in Python, NLP, Computer Vision, and Full-Stack Development. Hands-on experience developing machine-learning models, AI-powered applications, and Python-based tools through virtual internships and academic research projects.",
     location: "Tamil Nadu, India",
-    status: "Available for High-Impact Roles & Collaborations",
     email: "umarom98425@gmail.com",
     github: "https://github.com/UMARMUKTHAR03",
     linkedin: "https://www.linkedin.com/in/umarmukthar03/",
+    telegram: "https://t.me/Umarom98425",
     domain: "https://umar-mukthar.is-a.dev",
     avatarUrl: "/avatar.jpg",
-    hasResumeFile: false,
+    resumeUrl: "/Umar_Mukthar_Resume.pdf",
     education: {
-      degree: "B.E. in Artificial Intelligence and Machine Learning",
+      degree: "Bachelor of Engineering in Artificial Intelligence and Machine Learning",
       institution: "Chennai Institute of Technology",
       period: "2022 – 2026",
       cgpa: "8.54 / 10.0",
@@ -88,34 +87,30 @@ export const PORTFOLIO_DATA = {
   },
 
   skills: {
-    "Artificial Intelligence & ML": [
-      "PyTorch", "Scikit-Learn", "FastAPI", "SHAP Explainability", 
-      "MobileNetV3 (CV)", "BiLSTM (NLP)", "XGBoost", "LightGBM", 
-      "Hybrid Retrieval (RAG)", "Feature Engineering"
+    "Programming Languages": ["Python", "Java", "SQL", "JavaScript", "TypeScript", "C++"],
+    "AI & Machine Learning": [
+      "PyTorch", "TensorFlow", "Scikit-Learn", "Computer Vision", "NLP",
+      "Deep Learning", "Generative AI", "Neural Networks", "XGBoost", "LightGBM", "SHAP"
     ],
-    "Programming Languages": [
-      "Python (Advanced)", "TypeScript", "JavaScript", "SQL", "C++", "HTML5/CSS3"
-    ],
-    "Backend & APIs": [
-      "FastAPI", "NestJS", "Node.js", "Express", "RESTful APIs", "JWT & 2FA Auth"
-    ],
-    "Frontend Engineering": [
-      "React.js", "Next.js", "Tailwind CSS", "Framer Motion", "Vite", "Responsive UX"
-    ],
-    "Databases & Cloud": [
-      "PostgreSQL", "TypeORM", "Prisma", "Redis", "Supabase", "Git/GitHub", "Docker", "Render", "Vercel"
-    ],
-    "Software Practices": [
-      "Microservices", "Data Preprocessing", "Model Evaluation & Benchmarking", "Clean Architecture", "CI/CD"
-    ]
+    "Frameworks & Backend": ["FastAPI", "Flask", "Spring Boot", "REST APIs", "JWT", "Spring Security"],
+    "Frontend & UI": ["React", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Responsive Design"],
+    "AI Tools & Vector Stores": ["LangChain", "ChromaDB", "SHAP", "Groq Whisper", "Prompt Engineering"],
+    "Databases & Cloud": ["MySQL", "PostgreSQL", "AWS", "Cloud Computing", "Docker", "Git", "GitHub Actions", "Vercel"]
   },
+
+  skillsTicker: [
+    "Python", "Artificial Intelligence", "Machine Learning", "Deep Learning",
+    "Generative AI", "Computer Vision", "Natural Language Processing", "Neural Networks",
+    "TensorFlow", "PyTorch", "Flask", "Full-Stack Development", "HTML", "CSS",
+    "JavaScript", "Cloud Computing", "AWS", "Data Science", "SQL", "Git", "API Development"
+  ],
 
   codingProfiles: [
     {
       platform: "LeetCode",
       username: "umarom98425",
       stats: "800+ Solved",
-      highlight: "Rating: 1,480+ • Top 25% Globally",
+      highlight: "Rating: 1480 • Top 25%",
       url: "https://leetcode.com/umarom98425/",
       icon: "Code2"
     },
@@ -123,7 +118,7 @@ export const PORTFOLIO_DATA = {
       platform: "CodeChef",
       username: "umarom98425",
       stats: "Rating: 1004+",
-      highlight: "Div 3 & 4 Competitions",
+      highlight: "Active Contestant",
       url: "https://www.codechef.com/users/umarom98425",
       icon: "Terminal"
     },
@@ -131,7 +126,7 @@ export const PORTFOLIO_DATA = {
       platform: "Codeforces",
       username: "UMARMUKTHAR",
       stats: "Rating: 847",
-      highlight: "Active Problem Solver",
+      highlight: "Contest Participant",
       url: "https://codeforces.com/profile/UMARMUKTHAR",
       icon: "Cpu"
     }
@@ -139,68 +134,84 @@ export const PORTFOLIO_DATA = {
 
   experiences: [
     {
-      id: "skillvertex-ai-intern",
-      company: "SkillVertex",
-      role: "Artificial Intelligence Intern",
+      id: "aicte-eduskills-intern",
+      company: "All India Council for Technical Education (AICTE)",
+      program: "AICTE–EduSkills Virtual Internship",
+      role: "AI-ML Virtual Intern",
+      period: "October 2024 – December 2024",
+      duration: "10 Weeks",
+      location: "Remote",
+      type: "Virtual Internship",
+      summary:
+        "Successfully completed a 10-week AI-ML Virtual Internship through the AICTE–EduSkills Virtual Internship program at Chennai Institute of Technology, supported by the India Edu Program and Google for Developers.",
+      responsibilities: [
+        "Gained exposure to Artificial Intelligence and Machine Learning concepts.",
+        "Developed an understanding of AI/ML applications through structured virtual internship activities.",
+        "Strengthened technical knowledge of AI and ML fundamentals.",
+        "Explored practical applications of artificial intelligence and machine learning."
+      ],
+      techStack: ["Artificial Intelligence", "Machine Learning", "AI Fundamentals", "Technical Learning"],
+      certificateFile: "/certificates/eduskillcerti.pdf"
+    },
+    {
+      id: "cognifyz-web-intern",
+      company: "Cognifyz Technologies",
+      role: "Web Development Intern",
       period: "May 2024 – June 2024",
       duration: "2 Months",
-      location: "Bengaluru, India (Remote)",
+      location: "Remote",
       type: "Internship",
-      summary: "Evaluated machine learning algorithms, customer churn prediction pipelines, and deep-learning-based fraud detection techniques during internship research.",
+      summary:
+        "Completed a Web Development Internship at Cognifyz Technologies from May to June 2024, focusing on hands-on web assignments, structured problem-solving, and responsive design.",
       responsibilities: [
-        "Evaluated machine learning algorithms for customer churn prediction with zero data leakage principles.",
-        "Implemented and benchmarked deep-learning and gradient-boosted decision architectures for financial fraud detection.",
-        "Conducted exploratory feature importance and model performance evaluations across synthetic and benchmark data cohorts.",
-        "Designed feature engineering pipelines using Scikit-Learn and Pandas to maximize precision and recall trade-offs."
+        "Worked on web development assignments and practical technical tasks.",
+        "Strengthened web development knowledge through hands-on learning.",
+        "Improved technical problem-solving and attention to detail.",
+        "Demonstrated communication, coordination, and adaptability.",
+        "Developed practical experience through continuous learning and assigned activities."
       ],
-      techStack: ["Python", "Machine Learning", "Deep Learning", "Scikit-Learn", "Feature Engineering", "Pandas"],
-      projectsCompleted: [
-        "Customer churn prediction evaluation with zero data leakage",
-        "Deep-learning and gradient boosted decision ensemble benchmarking for fraud risk"
-      ],
-      skillsGained: [
-        "Zero-leakage cross-validation methodologies",
-        "Hyperparameter optimization and model explainability",
-        "Imbalanced dataset handling using SMOTE and threshold calibration"
-      ],
-      achievements: [
-        "Achieved 95.29% holdout accuracy on customer churn retention benchmark",
-        "Delivered comparative technical reports contrasting neural vs tree-based classification"
-      ],
-      certificateProofNote: "Internship completed with formal evaluation and verification available upon request."
+      techStack: ["Web Development", "HTML", "Frontend Development", "Problem Solving", "Communication"],
+      certificateFile: "/certificates/COGNIFYZ.pdf"
     },
     {
       id: "coderscave-python-intern",
       company: "CodersCave",
-      role: "Python Developer Intern",
+      role: "Python Development Intern",
       period: "November 2023 – December 2023",
       duration: "2 Months",
       location: "Remote",
-      type: "Internship",
-      summary: "Engineered four core Python desktop utility applications: sound recorder, calculator, random password generator, and typing speed tester.",
+      type: "Virtual Internship",
+      summary:
+        "Completed a virtual internship in Python Development at CodersCave, engineering desktop tools and utility applications with modular Python codebases.",
       responsibilities: [
-        "Developed a standalone audio sound recorder with dynamic audio capture and export capabilities.",
-        "Built an interactive desktop calculator with arithmetic expression parsing and error handling.",
-        "Created a cryptographic random password generator with customizable character sets and strength validation.",
-        "Implemented an interactive typing-speed tester calculating real-time WPM and accuracy metrics."
+        "Developed a Calculator application using Python.",
+        "Built a Voice Recorder application using Python libraries.",
+        "Applied programming concepts to practical development tasks.",
+        "Practiced debugging and logical problem-solving.",
+        "Strengthened Python programming skills through hands-on assignments."
       ],
-      techStack: ["Python", "Tkinter", "Audio Processing", "Cryptography", "Algorithms"],
-      projectsCompleted: [
-        "Voice Recorder with audio capture",
-        "Safe Calculator with token parsing",
-        "Cryptographic Password Generator",
-        "Typing Speed Tester with WPM metrics"
+      techStack: ["Python", "Application Development", "Debugging", "Problem Solving"],
+      certificateFile: "/certificates/CODERSCAVE.pdf"
+    },
+    {
+      id: "skillvertex-ai-intern",
+      company: "SkillVertex",
+      role: "Artificial Intelligence Intern",
+      period: "May 2023 – June 2023",
+      duration: "2 Months",
+      location: "Remote",
+      type: "Internship",
+      summary:
+        "Completed Artificial Intelligence training at SkillVertex from May to June 2023, gaining foundational knowledge across ML, NLP, computer vision, and robotics.",
+      responsibilities: [
+        "Gained foundational knowledge of Artificial Intelligence.",
+        "Studied Machine Learning, Natural Language Processing, Computer Vision, and Robotics.",
+        "Explored AI concepts and their applications to real-world problems.",
+        "Participated in technical assignments, learning activities, and projects.",
+        "Strengthened analytical thinking and problem-solving skills."
       ],
-      skillsGained: [
-        "Desktop UI event loops and asynchronous input handling",
-        "Cryptographic entropy and random number generation",
-        "Lexical parsing of mathematical syntax without unsafe eval"
-      ],
-      achievements: [
-        "Successfully delivered all four utility engines within deadlines with clean modular codebases",
-        "Formed the architectural foundation later modernized into the CodersCave Mini Projects Hub"
-      ],
-      certificateProofNote: "Internship verification and repository code artifacts are publicly accessible on GitHub."
+      techStack: ["Artificial Intelligence", "Machine Learning", "Natural Language Processing", "Computer Vision", "Robotics"],
+      certificateFile: "/certificates/skillvertex.pdf"
     }
   ] as Experience[],
 
@@ -212,7 +223,6 @@ export const PORTFOLIO_DATA = {
       category: "AI / ML",
       featured: true,
       image: "/projects/predictive-dashboard.png",
-      description: "A production-grade language platform featuring a custom 3.2M-parameter Bidirectional LSTM neural network trained on authentic Medium technical publications. Features a leak-free title-split evaluation and sub-5ms CPU forward-pass latency.",
       metrics: [
         { label: "Model Architecture", value: "3.2M-Param BiLSTM", condition: "100d Embed -> 150u BiLSTM -> Linear" },
         { label: "Holdout Accuracy", value: "15.18% Top-1 / 27.44% Top-5", condition: "Evaluated on 4,862 unseen sequences (587.82 Perplexity)" },
@@ -233,24 +243,20 @@ export const PORTFOLIO_DATA = {
         "Deliver sub-5ms forward-pass inference on standard CPU servers for real-time keystroke suggestions.",
         "Ensure rigorous 0% train/test data leakage via pre-generation title partitioning."
       ],
-      architectureOverview: "Dual-mode pipeline: A local PyTorch container runs the 3.2M BiLSTM (100d embedding, 150 bidirectional hidden units, 7,299 vocabulary projection head) for technical text, alongside an asynchronous Cloudflare Workers AI connector running Google Gemma 4 26B-A4B-IT for general email composition.",
+      architectureOverview: "Dual-mode pipeline: A local PyTorch container runs the 3.2M BiLSTM for technical text, alongside an asynchronous Cloudflare Workers AI connector running Google Gemma 4 for general text composition.",
       implementationDetails: [
-        "PyTorch CPU inference loop optimized using torch.inference_mode() and pre-computed token tables.",
+        "PyTorch CPU inference loop optimized using torch.inference_mode().",
         "FastAPI asynchronous REST gateway with /predict, /generate, and telemetry endpoints.",
-        "React + Vite frontend with live keystroke event listener, debouncing, and probability pill visualization."
+        "React + Vite frontend with live keystroke event listener and debouncing."
       ],
       challengesAndSolutions: [
         {
           challenge: "Preventing train-test data leakage when generating overlapping n-gram training sequences.",
           solution: "Enforced document/title-level partitioning before generating token sequences, guaranteeing unseen validation tokens."
-        },
-        {
-          challenge: "Operating within free-tier container memory limits (512MB RAM ceiling).",
-          solution: "Pruned vocabulary to 7,299 high-frequency tokens and eliminated heavy runtime transformer weights, maintaining peak RSS at 381MB."
         }
       ],
       futureImprovements: [
-        "Quantization to INT8 using ONNX Runtime for an additional 2x throughput boost.",
+        "Quantization to INT8 using ONNX Runtime for additional throughput.",
         "User-specific adapter weights for fine-tuned personal vocabulary adaptation."
       ]
     },
@@ -261,7 +267,6 @@ export const PORTFOLIO_DATA = {
       category: "AI / ML",
       featured: true,
       image: "/projects/rag-dashboard.png",
-      description: "Enterprise knowledge assistant unifying PDF, DOCX, XLSX, and audio inputs with strict factual grounding. Combines 128-dimensional dense semantic hash vectors with BM25 lexical keyword scoring for sub-millisecond retrieval.",
       metrics: [
         { label: "Retrieval Latency", value: "0.27ms avg", condition: "Evaluated in-memory hybrid search" },
         { label: "Sanity Benchmark", value: "MRR 1.000 (Sanity)", condition: "Measured on 4-document multi-format sanity benchmark" },
@@ -275,7 +280,7 @@ export const PORTFOLIO_DATA = {
         "Strict provenance tracking mapping citations directly back to source documents and page units.",
         "Dual-engine cloud LLM routing across Groq and Google Gemini with Whisper Large v3 voice input."
       ],
-      evaluationNote: "Benchmark Notice: The reported MRR 1.000 was measured on a deterministic 4-document multi-format sanity test to verify retrieval ranking integrity, not an exhaustive open-domain accuracy guarantee across massive multi-gigabyte corpora.",
+      evaluationNote: "Benchmark Notice: The reported MRR 1.000 was measured on a deterministic 4-document multi-format sanity test to verify retrieval ranking integrity.",
       problemStatement: "Standard RAG systems often experience hallucinations, slow vector database lookups with heavy native dependencies, and opaque citations without verifiable source chunk provenance.",
       objectives: [
         "Build a dependency-light in-memory hybrid retrieval engine operating with sub-millisecond ranking.",
@@ -292,10 +297,6 @@ export const PORTFOLIO_DATA = {
         {
           challenge: "Handling complex tabular formats (XLSX, CSV) without losing column-row context.",
           solution: "Implemented markdown-table serialization per chunk so numerical headers persist across embeddings."
-        },
-        {
-          challenge: "Native vector database installation failures on diverse deployment hosts.",
-          solution: "Engineered a pure algebraic hash-vector calculation with cosine similarity, guaranteeing 100% portability."
         }
       ],
       futureImprovements: [
@@ -310,18 +311,17 @@ export const PORTFOLIO_DATA = {
       category: "Computer Vision",
       featured: true,
       image: "/projects/vision-prediction.png",
-      description: "Deep learning computer vision platform engineered with PyTorch MobileNetV3-Small for ImageNet-1K (1,000 object classes) classification, paired with Grad-CAM activation mapping for visual decision transparency.",
       metrics: [
         { label: "Model Architecture", value: "MobileNetV3-Small", condition: "Pretrained ImageNet-1K weights" },
         { label: "Taxonomy", value: "1,000 ImageNet Classes", condition: "Full ImageNet-1K object categories" },
-        { label: "Explainability", value: "Grad-CAM Conv Saliency", condition: "Computed on convolutional layer features.12" }
+        { label: "Explainability", value: "Grad-CAM Conv Saliency", condition: "Computed on final convolutional layer" }
       ],
       tags: ["PyTorch", "MobileNetV3-Small", "Grad-CAM", "FastAPI", "React 19", "TorchVision"],
       githubUrl: "https://github.com/UMARMUKTHAR03/image-recognition-app",
       liveUrl: "https://umarmukthar03.github.io/image-recognition-app/",
       highlights: [
         "Lightweight MobileNetV3-Small architecture balancing ImageNet-1K precision with low CPU resource overhead.",
-        "Authentic Grad-CAM backpropagation generating Jet colormap overlays from layer features.12 activations.",
+        "Authentic Grad-CAM backpropagation generating Jet colormap overlays for explainability.",
         "Full image pipeline with TorchVision transforms, batch image evaluation, and CSV export."
       ],
       evaluationNote: "Utilizes official MobileNetV3-Small weights pretrained on ImageNet-1K. Forward inference and Grad-CAM activation overlays are executed live on image bytes.",
@@ -331,7 +331,7 @@ export const PORTFOLIO_DATA = {
         "Provide explainable visual saliency heatmaps via Grad-CAM without slowing down inference.",
         "Support batch evaluation and CSV export for automated validation workflows."
       ],
-      architectureOverview: "Uploaded images are validated and normalized with TorchVision. MobileNetV3-Small computes top-5 class logits. Simultaneously, backward gradients flow into the final convolutional layer (features.12) to compute normalized alpha-blended activation heatmaps.",
+      architectureOverview: "Uploaded images are validated and normalized with TorchVision. MobileNetV3-Small computes top-5 class logits. Simultaneously, backward gradients flow into the final convolutional layer to compute normalized alpha-blended activation heatmaps.",
       implementationDetails: [
         "Thread-safe singleton model inference service under torch.inference_mode().",
         "Grad-CAM hook capturing forward feature maps and backward gradients for class-specific localization.",
@@ -341,10 +341,6 @@ export const PORTFOLIO_DATA = {
         {
           challenge: "Grad-CAM computational overhead during real-time image uploads.",
           solution: "Restricted gradient backpropagation strictly to the final convolutional block, keeping explanation latency under 120ms."
-        },
-        {
-          challenge: "Handling varied image orientations, color spaces (RGBA/CMYK), and oversized uploads.",
-          solution: "Implemented PIL and TorchVision preprocessing transforming any valid image into standardized [1, 3, 224, 224] RGB tensors."
         }
       ],
       futureImprovements: [
@@ -358,7 +354,8 @@ export const PORTFOLIO_DATA = {
       subtitle: "Monorepo with NestJS, Next.js 16, PostgreSQL, Redis & Stripe",
       category: "Full-Stack",
       featured: true,
-      description: "Full-featured, enterprise-grade luxury e-commerce platform built on a scalable NestJS backend and Next.js 16 frontend with Stripe payment flows, Redis caching, and dual JWT/Cookie auth systems.",
+      image: "/projects/bazaarflow-homepage.png",
+      architectureImage: "/projects/bazaarflow-architecture.svg",
       metrics: [
         { label: "Backend Core", value: "NestJS + PostgreSQL", condition: "TypeORM schema with ACID compliance" },
         { label: "Frontend", value: "Next.js 16 + Tailwind", condition: "App router & server-side rendering" },
@@ -389,10 +386,6 @@ export const PORTFOLIO_DATA = {
         {
           challenge: "Preventing cross-site token interception in administrative panels.",
           solution: "Replaced localStorage JWT storage with SameSite=Strict HttpOnly Secure cookies and same-origin proxy rewrites."
-        },
-        {
-          challenge: "Database synchronization race conditions during concurrent checkout spikes.",
-          solution: "Implemented pessimistic row locking in TypeORM transactions during inventory reservation."
         }
       ],
       futureImprovements: [
@@ -421,32 +414,26 @@ export const PORTFOLIO_DATA = {
         "Local feature attribution watermarks computed via SHAP TreeExplainer for decision transparency.",
         "Configurable decision thresholds mapping probabilities into Low, Medium, High, and Critical tiers."
       ],
-      evaluationNote: "Dataset Disclosure: This prototype was evaluated on a calibrated synthetic benchmark of 40,000 records. It has not been validated on real bank or live cardholder transactions and is designed as an educational/portfolio decision-support system.",
+      evaluationNote: "Dataset Disclosure: This prototype was evaluated on a calibrated synthetic benchmark of 40,000 records. It has not been validated on real bank or live cardholder transactions and is designed as an educational decision-support system.",
       problemStatement: "Financial institutions face extreme class imbalance in fraud detection; models must minimize false negatives while maintaining high precision to avoid legitimate transaction friction.",
       objectives: [
         "Train gradient-boosted decision ensembles balancing precision and recall on low-prevalence transaction data.",
         "Provide real-time SHAP feature attributions showing exactly why a transaction was flagged.",
         "Deploy a lightweight FastAPI inference microservice with batch CSV upload capability."
       ],
-      architectureOverview: "25 input transaction attributes (Time, Amount, V1–V20, derived temporal features, and risk score) are validated by Pydantic, scaled, and scored by an XGBoost model. SHAP TreeExplainer computes local force plots before JSON response dispatch.",
+      architectureOverview: "25 input transaction attributes are validated by Pydantic, scaled, and scored by an XGBoost model. SHAP TreeExplainer computes local force plots before JSON response dispatch.",
       implementationDetails: [
         "Benchmarked XGBoost against LightGBM and Random Forest baselines.",
-        "Configurable probability thresholds separating transactions into Low, Medium, High, and Critical risk tiers.",
-        "Ephemeral SQLite audit logging for recent transactions."
+        "Configurable probability thresholds separating transactions into Low, Medium, High, and Critical risk tiers."
       ],
       challengesAndSolutions: [
         {
           challenge: "Extreme class imbalance (~2% fraudulent transactions).",
           solution: "Applied scale_pos_weight optimization and tuned decision thresholds on precision-recall curves rather than raw accuracy."
-        },
-        {
-          challenge: "SHAP calculation latency on low-compute containers.",
-          solution: "Utilized TreeExplainer with pre-computed background summaries, reducing explanation time to <15ms."
         }
       ],
       futureImprovements: [
-        "Graph neural network (GNN) modeling to capture transaction rings and mule account networks.",
-        "Kafka stream ingestion for real-time asynchronous scoring."
+        "Graph neural network (GNN) modeling to capture transaction rings and mule account networks."
       ]
     },
     {
@@ -480,22 +467,16 @@ export const PORTFOLIO_DATA = {
       architectureOverview: "Preprocessing pipelines transform customer billing, contract, and usage metrics. A trained Gradient Boosting classifier computes churn likelihood, while a SHAP model highlights key positive and protective drivers.",
       implementationDetails: [
         "Zero-leakage pipeline fitting scalers and encoders strictly on the training partition.",
-        "Counterfactual simulator re-evaluating risk in real time as contract duration or discounts are toggled.",
-        "Client-side executive PDF generation using jsPDF with risk telemetry charts."
+        "Counterfactual simulator re-evaluating risk in real time as contract duration or discounts are toggled."
       ],
       challengesAndSolutions: [
         {
           challenge: "Preventing subtle data leakage during categorical encoding and imputation.",
           solution: "Encapsulated all transformations into Scikit-Learn Pipelines fitted strictly on train splits."
-        },
-        {
-          challenge: "Empowering non-technical retention staff with clear insights.",
-          solution: "Translated complex SHAP values into plain-English playbooks (e.g., 'Upgrade to annual contract reduces risk by 28%')."
         }
       ],
       futureImprovements: [
-        "Survival analysis modeling customer lifetime duration probabilities.",
-        "Automated email outreach triggers via CRM webhook integrations."
+        "Survival analysis modeling customer lifetime duration probabilities."
       ]
     },
     {
@@ -503,95 +484,446 @@ export const PORTFOLIO_DATA = {
       title: "Python Software Suite & Developer Hub",
       subtitle: "Multi-Tool Productivity & Utility Applications",
       category: "Python & Systems",
-      featured: false,
+      featured: true,
+      image: "/projects/coderscave-dashboard.png",
       description: "A centralized developer toolbelt elevating four Python desktop projects into a unified modern web dashboard: audio voice recorder, typing speed tester, cryptographic password generator, and calculator.",
       metrics: [
-        { label: "Tools Unified", value: "4 Modules", condition: "Recorder, Calculator, Password, Typing" },
-        { label: "Frontend/Backend", value: "React 18 + FastAPI", condition: "TypeScript & Python 3.11" },
-        { label: "Audio & Crypto", value: "Web Audio + Web Crypto", condition: "Safe client-side execution" }
+        { label: "Tools Unified", value: "4 Modules", condition: "Audio, Crypto, Typing, Calculator" },
+        { label: "Frontend/Backend", value: "React 18 + FastAPI", condition: "Modernized from Tkinter desktop core" }
       ],
-      tags: ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Web Audio API"],
+      tags: ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/UMARMUKTHAR03/coderscave-mini-projects-hub",
       liveUrl: "https://umarmukthar03.github.io/coderscave-mini-projects-hub/",
       highlights: [
-        "Elevates original CodersCave Python desktop tools into high-performance web applications.",
-        "Interactive live typing tester with real-time WPM calculation and error highlight.",
-        "Cryptographically secure password generation with client-side Web Crypto API."
+        "Consolidated 4 standalone Python desktop utilities into a responsive single-page application.",
+        "Real-time audio recording in-browser with blob playback and download.",
+        "Cryptographic password generation with customizable entropy."
       ],
-      evaluationNote: "Preserves the algorithmic functionality of the four original internship desktop utilities inside a unified modern web platform.",
-      problemStatement: "Desktop utility scripts in Tkinter often lack cross-platform accessibility, mobile responsiveness, and modern interactive visual feedback.",
+      evaluationNote: "Modernized web application unifying original internship desktop utilities built during CodersCave internship.",
+      problemStatement: "Utility applications are often fragmented across disparate CLI scripts or desktop UI loops, lacking centralized deployment and web accessibility.",
       objectives: [
-        "Preserve the algorithmic core of four original Python applications within modern full-stack web standards.",
-        "Implement real-time audio visualization using the Web Audio API.",
-        "Ensure secure client-side cryptographic randomness without network latency."
+        "Modernize desktop Tkinter tools into a fast, accessible web portal.",
+        "Deliver sub-second response times for cryptographic and mathematical operations via FastAPI.",
+        "Provide in-browser recording without third-party audio plugin dependencies."
       ],
-      architectureOverview: "A unified dashboard hosting four modular engines: audio recorder (HTML5 Canvas + MediaRecorder), typing velocity engine (keystroke delta timers), password generator (window.crypto), and safe calculator (tokenized parser).",
+      architectureOverview: "FastAPI handles arithmetic validation and audio processing endpoints, while React and Tailwind render a modular tabbed interface with real-time state management.",
       implementationDetails: [
-        "Safe two-pass lexical math evaluator replacing dangerous eval() calls.",
-        "Real-time oscilloscope audio waveform rendered at 60 FPS on canvas.",
-        "Live typing accuracy scoring with mistake position indexing and persistent speed history."
+        "Audio recording via Web Audio API with WAV container encoding.",
+        "Real-time typing speed calculation with live WPM and accuracy telemetry."
       ],
       challengesAndSolutions: [
         {
-          challenge: "Eliminating security risks in mathematical formula parsing.",
-          solution: "Built a custom token-based arithmetic parser enforcing operator precedence without executing dynamic code."
-        },
-        {
-          challenge: "Lag-free audio visualization during long recording sessions.",
-          solution: "Utilized AnalyserNode with requestAnimationFrame for efficient memory management."
+          challenge: "Cross-browser compatibility for browser audio capture.",
+          solution: "Implemented MediaRecorder API fallback with PCM blob transcoding."
         }
       ],
       futureImprovements: [
-        "Export recordings directly to cloud audio storage.",
-        "Add multi-language code typing speed benchmark modes."
+        "Speech-to-text transcription for recorded audio notes."
       ]
     }
   ] as Project[],
 
   certifications: [
+    // A. Energy and Sustainability
     {
-      id: "nptel-computer-vision",
-      title: "Computer Vision",
-      issuer: "NPTEL (National Programme on Technology Enhanced Learning)",
-      date: "October 2023",
-      badgeText: "Elite Certification",
-      credentialId: "NPTEL23CS105S44890123",
-      skillsCovered: ["Image Processing", "Feature Extraction", "Edge Detection", "Optical Flow", "Deep Visual Models", "Convolutional Neural Networks"],
-      description: "Rigorous academic certification administered by IIT faculties covering mathematical and computational foundations of computer vision, spatial filtering, geometric transformations, stereo vision, and modern neural architectures.",
-      verificationNote: "Official NPTEL Elite Certification verified through the Swayam / NPTEL examination registry."
+      id: "energy-literacy",
+      title: "Certificate of Energy Literacy",
+      issuer: "Energy Swaraj Foundation",
+      issued: "January 2024",
+      category: "Sustainability and Other Learning",
+      credentialId: "ELT24-1-f6c3",
+      description: "Successfully completed the Energy Literacy Training program offered by the Energy Swaraj Foundation, covering 12 modules. Gained knowledge of energy generation and consumption, energy wastage, carbon footprint, environmental impact, energy conservation, alternative energy solutions, carbon neutrality, solar energy misconceptions, and approaches to adopting solar energy solutions.",
+      skills: ["Energy Literacy", "Renewable Energy", "Sustainability", "Carbon Footprint Awareness", "Energy Conservation"],
+      certificateFile: "/certificates/UMAR MUKTHAR O M-ELT (1).pdf"
+    },
+    // B. AWS and Cloud Computing
+    {
+      id: "aws-cloud-solutions-architect",
+      title: "AWS Cloud Solutions Architect",
+      issuer: "Amazon Web Services (AWS) via Coursera",
+      issued: "January 2024",
+      category: "Cloud Computing and AWS",
+      description: "Successfully completed the AWS Cloud Solutions Architect Professional Certificate, consisting of four courses offered through Coursera by Amazon Web Services. Developed foundational knowledge of cloud architecture, AWS services, cloud infrastructure, and data lake design. Learned about deploying cloud solutions involving networks, systems, and application services, while preparing for the AWS Certified Solutions Architect – Associate examination.",
+      skills: ["Amazon Web Services", "Cloud Computing", "Cloud Architecture", "Solution Architecture"],
+      certificateFile: "/certificates/AWS Cloud Solutions Architect.pdf"
     },
     {
-      id: "coursera-deep-learning",
+      id: "aws-cloud-technical-essentials",
+      title: "AWS Cloud Technical Essentials",
+      issuer: "Amazon Web Services (AWS) via Coursera",
+      issued: "January 2024",
+      category: "Cloud Computing and AWS",
+      description: "Successfully completed the AWS Cloud Technical Essentials course, authorized by Amazon Web Services and offered through Coursera. Developed foundational knowledge of AWS cloud computing concepts, core AWS services, cloud infrastructure, and the fundamentals of building and deploying applications in the AWS Cloud.",
+      skills: ["AWS", "Cloud Computing", "Cloud Infrastructure", "Application Deployment"],
+      certificateFile: "/certificates/AWS Cloud Technical Essentials.pdf"
+    },
+    {
+      id: "architecting-solutions-on-aws",
+      title: "Architecting Solutions on AWS",
+      issuer: "Amazon Web Services (AWS) via Coursera",
+      issued: "January 2024",
+      category: "Cloud Computing and AWS",
+      description: "Successfully completed the Architecting Solutions on AWS course, authorized by Amazon Web Services and offered through Coursera. Gained foundational knowledge of AWS cloud architecture, cloud solution design, and the principles of building scalable, reliable, and cost-effective cloud solutions.",
+      skills: ["AWS", "Cloud Computing", "Cloud Architecture", "Solution Architecture"],
+      certificateFile: "/certificates/Architecting Solutions on AWS.pdf"
+    },
+    {
+      id: "designing-data-lakes-aws",
+      title: "Introduction to Designing Data Lakes on AWS",
+      issuer: "Amazon Web Services (AWS) via Coursera",
+      issued: "January 2024",
+      category: "Cloud Computing and AWS",
+      description: "Successfully completed the Introduction to Designing Data Lakes on AWS course, authorized by Amazon Web Services and offered through Coursera. Gained foundational knowledge of AWS data lakes and their role in storing, managing, and analyzing large volumes of data to support data-driven decision-making.",
+      skills: ["AWS", "Data Lakes", "Cloud Computing", "Data Storage", "Data Management"],
+      certificateFile: "/certificates/Introduction to Designing Data Lakes on AWS.pdf"
+    },
+    {
+      id: "exam-prep-aws-solutions-architect",
+      title: "Exam Prep: AWS Certified Solutions Architect – Associate",
+      issuer: "Amazon Web Services (AWS) via Coursera",
+      issued: "January 2024",
+      category: "Cloud Computing and AWS",
+      description: "Successfully completed the Exam Prep: AWS Certified Solutions Architect – Associate course, authorized by Amazon Web Services and offered through Coursera. Gained foundational knowledge of AWS cloud architecture and the concepts required to prepare for the AWS Certified Solutions Architect – Associate examination.",
+      skills: ["AWS", "Cloud Computing", "Cloud Architecture", "AWS Solutions Architecture"],
+      certificateFile: "/certificates/Exam Prep AWS Certified Solutions Architect -Associate.pdf"
+    },
+    // C. Mathematics for Machine Learning and Data Science
+    {
+      id: "linear-algebra-ml",
+      title: "Linear Algebra for Machine Learning and Data Science",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Linear Algebra for Machine Learning and Data Science course, authorized by DeepLearning.AI and offered through Coursera. Developed foundational knowledge of linear algebra concepts relevant to machine learning and data science, strengthening my understanding of mathematical representations and computations used in machine learning models.",
+      skills: ["Linear Algebra", "Mathematics for Machine Learning", "Machine Learning", "Data Science"],
+      certificateFile: "/certificates/Linear Algebra for Machine Learning and Data Science.pdf"
+    },
+    {
+      id: "calculus-ml",
+      title: "Calculus for Machine Learning and Data Science",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Calculus for Machine Learning and Data Science course, authorized by DeepLearning.AI and offered through Coursera. Developed foundational knowledge of calculus concepts relevant to machine learning and data science, strengthening my mathematical understanding for analyzing data and optimizing machine learning models.",
+      skills: ["Calculus", "Mathematics for Machine Learning", "Machine Learning", "Mathematical Optimization"],
+      certificateFile: "/certificates/Calculus for Machine Learning and Data Science.pdf"
+    },
+    {
+      id: "probability-statistics-ml",
+      title: "Probability & Statistics for Machine Learning & Data Science",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Probability & Statistics for Machine Learning & Data Science course, authorized by DeepLearning.AI and offered through Coursera. Developed foundational knowledge of probability and statistics concepts essential for machine learning and data science, supporting data analysis, statistical reasoning, and informed decision-making.",
+      skills: ["Probability", "Statistics", "Machine Learning", "Data Science", "Statistical Analysis"],
+      certificateFile: "/certificates/Probability & Statistics for Machine Learning &Data Science.pdf"
+    },
+    {
+      id: "mathematics-for-ml-specialization",
+      title: "Mathematics for Machine Learning and Data Science",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Mathematics for Machine Learning and Data Science Specialization, consisting of three courses offered through Coursera by DeepLearning.AI. Developed a foundation in mathematical concepts essential for machine learning and data science, including linear algebra, calculus, probability, and statistics.",
+      skills: ["Mathematics for Machine Learning", "Linear Algebra", "Calculus", "Probability", "Statistics", "Data Science"],
+      certificateFile: "/certificates/Mathematics for Machine Learning and Data Science.pdf"
+    },
+    // D. Data Visualization
+    {
+      id: "fundamentals-of-data-visualization",
+      title: "Fundamentals of Data Visualization",
+      issuer: "University of Colorado Boulder via Coursera",
+      issued: "January 2024",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Fundamentals of Data Visualization course, authorized by the University of Colorado Boulder and offered through Coursera. Developed foundational knowledge of data visualization principles and techniques for presenting data clearly and effectively to communicate insights and support data-driven decision-making.",
+      skills: ["Data Visualization", "Data Analysis", "Data Presentation", "Visual Communication"],
+      certificateFile: "/certificates/Fundamentals of Data Visualization(UCB).pdf"
+    },
+    // E. Deep Learning
+    {
+      id: "neural-networks-deep-learning",
+      title: "Neural Networks and Deep Learning",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Deep Learning",
+      description: "Successfully completed the Neural Networks and Deep Learning course, authorized by DeepLearning.AI and offered through Coursera. Gained foundational knowledge of neural networks, deep learning architectures, forward and backward propagation, and techniques for training neural network models.",
+      skills: ["Deep Learning", "Neural Networks", "Artificial Intelligence", "Backpropagation", "Machine Learning"],
+      certificateFile: "/certificates/Neural Networks and Deep Learning.pdf"
+    },
+    {
+      id: "structuring-ml-projects",
+      title: "Structuring Machine Learning Projects",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Structuring Machine Learning Projects course, authorized by DeepLearning.AI and offered through Coursera. Gained knowledge of strategies for structuring machine learning projects, analyzing errors, evaluating model performance, identifying data mismatches, and making informed decisions to improve machine learning systems.",
+      skills: ["Machine Learning", "Model Evaluation", "Error Analysis", "Machine Learning Strategy"],
+      certificateFile: "/certificates/Structuring Machine Learning Projects.pdf"
+    },
+    {
+      id: "improving-deep-neural-networks",
+      title: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Deep Learning",
+      description: "Successfully completed the Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization course, authorized by DeepLearning.AI and offered through Coursera. Gained knowledge of techniques for improving deep neural network performance, including hyperparameter tuning, regularization, and optimization strategies.",
+      skills: ["Deep Learning", "Neural Networks", "Hyperparameter Tuning", "Regularization", "Optimization Algorithms"],
+      certificateFile: "/certificates/Improving Deep Neural Networks.pdf"
+    },
+    {
+      id: "convolutional-neural-networks",
+      title: "Convolutional Neural Networks",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Deep Learning",
+      description: "Successfully completed the Convolutional Neural Networks course, authorized by DeepLearning.AI and offered through Coursera. Gained knowledge of CNN architectures and their applications in computer vision and image recognition, including how convolutional neural networks extract features and analyze visual data.",
+      skills: ["Deep Learning", "Convolutional Neural Networks", "Computer Vision", "Image Classification"],
+      certificateFile: "/certificates/Convolutional Neural Networks.pdf"
+    },
+    {
+      id: "sequence-models",
+      title: "Sequence Models",
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Deep Learning",
+      description: "Successfully completed the Sequence Models course, authorized by DeepLearning.AI and offered through Coursera. Gained knowledge of sequence modeling techniques used in deep learning and their applications in natural language processing, speech recognition, and other sequential data tasks.",
+      skills: ["Deep Learning", "Sequence Models", "Recurrent Neural Networks", "Long Short-Term Memory"],
+      certificateFile: "/certificates/Sequence Models.pdf"
+    },
+    {
+      id: "deep-learning-specialization",
       title: "Deep Learning Specialization",
-      issuer: "Coursera & DeepLearning.AI",
-      date: "January 2024",
-      badgeText: "Specialization Certificate",
-      credentialId: "COURSERA-DL-SPEC-UM03",
-      skillsCovered: ["Neural Networks", "Optimization Algorithms", "Convolutional Networks", "Sequence Models (LSTM/GRU)", "Hyperparameter Tuning", "TensorFlow & Keras"],
-      description: "Five-course comprehensive deep learning specialization covering neural network fundamentals, backpropagation calculus, optimization techniques (Adam, RMSprop), CNN vision models, and RNN/LSTM sequence architectures.",
-      verificationNote: "Completed coursework and hands-on lab evaluations certified by DeepLearning.AI."
+      issuer: "DeepLearning.AI via Coursera",
+      issued: "January 2024",
+      category: "Deep Learning",
+      description: "Successfully completed the Deep Learning Specialization, consisting of five courses offered through Coursera by DeepLearning.AI. Gained knowledge of neural networks, deep neural network optimization, hyperparameter tuning, regularization, convolutional neural networks, and sequence models. Applied deep learning concepts using Python and TensorFlow.",
+      skills: ["Deep Learning", "Neural Networks", "Python", "TensorFlow", "Convolutional Neural Networks"],
+      certificateFile: "/certificates/Deep Learning.PDF"
+    },
+    // F. Artificial Intelligence and Generative AI
+    {
+      id: "intro-to-ai-ibm",
+      title: "Introduction to Artificial Intelligence (AI)",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Introduction to Artificial Intelligence (AI) course, authorized by IBM and offered through Coursera. Gained foundational knowledge of artificial intelligence, its core concepts, applications, and potential use cases across different industries.",
+      skills: ["Artificial Intelligence", "AI Fundamentals", "AI Applications", "Machine Learning Fundamentals"],
+      certificateFile: "/certificates/Introduction to Artificial Intelligence (AI).pdf"
     },
     {
-      id: "cisco-networking-essentials",
+      id: "genai-intro-applications",
+      title: "Generative AI: Introduction and Applications",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "Generative AI",
+      description: "Successfully completed the Generative AI: Introduction and Applications course, authorized by IBM and offered through Coursera. Gained foundational knowledge of generative artificial intelligence, its applications, and its potential use cases across different domains.",
+      skills: ["Generative AI", "Artificial Intelligence", "AI Applications", "Prompt Engineering"],
+      certificateFile: "/certificates/Generative AI Introduction and Applications.PDF"
+    },
+    {
+      id: "genai-prompt-engineering",
+      title: "Generative AI: Prompt Engineering Basics",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "Generative AI",
+      description: "Successfully completed the Generative AI: Prompt Engineering Basics course, authorized by IBM and offered through Coursera. Gained foundational knowledge of generative AI and prompt engineering, including designing effective prompts to guide AI models and generate relevant outputs for different tasks.",
+      skills: ["Generative AI", "Prompt Engineering", "Large Language Models", "Artificial Intelligence"],
+      certificateFile: "/certificates/Generative AI Prompt Engineering Basics.PDF"
+    },
+    {
+      id: "building-ai-chatbots",
+      title: "Building AI Powered Chatbots Without Programming",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "Generative AI",
+      description: "Successfully completed the Building AI Powered Chatbots Without Programming course, authorized by IBM and offered through Coursera. Gained foundational knowledge of building AI-powered chatbots without coding and explored how chatbot technology can create interactive conversational experiences and improve customer support.",
+      skills: ["Artificial Intelligence", "Chatbot Development", "IBM Watson", "Conversational AI"],
+      certificateFile: "/certificates/Building AI Powered Chatbots Without Programming.pdf"
+    },
+    {
+      id: "python-for-data-science-ai",
+      title: "Python for Data Science, AI & Development",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Python for Data Science, AI & Development course, authorized by IBM and offered through Coursera. Gained foundational knowledge of Python programming for data science and AI, including data manipulation, data analysis, Python libraries, and programming techniques for data-driven problems.",
+      skills: ["Python Programming", "Data Science", "Data Analysis", "Artificial Intelligence"],
+      certificateFile: "/certificates/Python for Data Science, AI & Development.pdf"
+    },
+    {
+      id: "developing-ai-apps-python-flask",
+      title: "Developing AI Applications with Python and Flask",
+      issuer: "IBM via Coursera",
+      issued: "January 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Developing AI Applications with Python and Flask course, authorized by IBM and offered through Coursera. Gained practical knowledge of developing AI-powered applications using Python and Flask, with a focus on integrating AI capabilities into web applications and building functional application interfaces.",
+      skills: ["Python", "Flask", "Artificial Intelligence", "Web Application Development"],
+      certificateFile: "/certificates/Developing AI Applications with Python and Flask.pdf"
+    },
+    {
+      id: "ibm-applied-ai-professional",
+      title: "IBM Applied AI",
+      issuer: "IBM via Coursera",
+      issued: "February 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the IBM Applied AI Professional Certificate, consisting of seven courses offered through Coursera. Gained practical knowledge of artificial intelligence, generative AI, prompt engineering, Python programming, and IBM Watson AI services and APIs. Developed and deployed an AI-powered customer support chatbot and explored computer vision and image processing.",
+      skills: ["Generative AI", "Prompt Engineering", "IBM Watson", "Chatbot Development", "Computer Vision"],
+      certificateFile: "/certificates/IBM Applied AI.pdf"
+    },
+    {
+      id: "building-ai-apps-watson-apis",
+      title: "Building AI Applications with Watson APIs",
+      issuer: "IBM via Coursera",
+      issued: "February 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Building AI Applications with Watson APIs course, authorized by IBM and offered through Coursera. Gained foundational knowledge of building AI-powered applications using IBM Watson APIs and explored how AI services can be integrated into applications to solve real-world problems.",
+      skills: ["Artificial Intelligence", "IBM Watson", "API Integration", "AI Application Development"],
+      certificateFile: "/certificates/Building AI Applications with Watson APIs.pdf"
+    },
+    {
+      id: "supervised-machine-learning-regression-classification",
+      title: "Supervised Machine Learning: Regression and Classification",
+      issuer: "DeepLearning.AI and Stanford University via Coursera",
+      issued: "February 2024",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Supervised Machine Learning: Regression and Classification course, authorized by DeepLearning.AI and Stanford University and offered through Coursera. Gained knowledge of supervised machine learning techniques, including regression and classification, and developed an understanding of how machine learning models make predictions from data.",
+      skills: ["Machine Learning", "Supervised Learning", "Linear Regression", "Classification", "Predictive Modeling"],
+      certificateFile: "/certificates/Supervised Machine Learning Regression and Classification.pdf"
+    },
+    // G. Process Mining
+    {
+      id: "celonis-foundations",
+      title: "Celonis Foundations",
+      issuer: "Celonis Academy",
+      issued: "December 2024",
+      category: "Sustainability and Other Learning",
+      description: "Successfully completed the Celonis Foundations learning credential through Celonis Academy. This credential demonstrates foundational learning in the Celonis platform and process mining concepts, supporting data-driven process analysis and business process improvement.",
+      skills: ["Process Mining", "Data Analysis", "Business Process Improvement", "Celonis Platform"],
+      certificateFile: "/certificates/CelonisFoundCerti.pdf"
+    },
+    // H. Networking and Cisco Networking Academy (CIT)
+    {
+      id: "ccna-intro-networks-cit",
+      title: "CCNA: Introduction to Networks",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "Networking",
+      description: "Successfully completed the CCNA: Introduction to Networks course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Developed foundational knowledge of networking concepts, network communication, IP addressing, network protocols, and networking devices.",
+      skills: ["Computer Networking", "IP Addressing", "Network Protocols", "Network Fundamentals", "Cisco Networking"],
+      certificateFile: "/certificates/CCNA1.pdf"
+    },
+    {
+      id: "intro-cybersecurity-cit",
+      title: "Introduction to Cybersecurity",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "Cybersecurity",
+      description: "Successfully completed the Introduction to Cybersecurity course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Developed foundational knowledge of cybersecurity concepts, common cyber threats, online safety, and methods for protecting digital information and systems.",
+      skills: ["Cybersecurity", "Online Safety", "Threat Awareness", "Information Protection"],
+      certificateFile: "/certificates/Introduction to Cybersecurity0.pdf"
+    },
+    {
+      id: "python-essentials-2",
+      title: "Python Essentials 2",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Python Essentials 2 course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Further developed Python programming knowledge and problem-solving skills through advanced programming concepts and practical coding techniques.",
+      skills: ["Python Programming", "Object-Oriented Programming", "Data Structures", "Exception Handling"],
+      certificateFile: "/certificates/Python Essentials 2.pdf"
+    },
+    {
+      id: "python-essentials-1",
+      title: "Python Essentials 1",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "AI and Machine Learning",
+      description: "Successfully completed the Python Essentials 1 course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Developed foundational knowledge of Python programming, including basic programming concepts, variables, data types, control flow, and problem-solving techniques.",
+      skills: ["Python Programming", "Programming Fundamentals", "Problem Solving", "Control Flow"],
+      certificateFile: "/certificates/Python Essentials 1.pdf"
+    },
+    {
+      id: "ccna-enterprise-networking-security-automation",
+      title: "CCNA: Enterprise Networking, Security, and Automation",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "Networking",
+      description: "Successfully completed the CCNA: Enterprise Networking, Security, and Automation course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Developed foundational knowledge of enterprise networking, network security, network automation, and network infrastructure management.",
+      skills: ["Enterprise Networking", "Network Security", "Network Automation", "Network Configuration"],
+      certificateFile: "/certificates/CCNA3.pdf"
+    },
+    {
+      id: "ccna-switching-routing-wireless",
+      title: "CCNA: Switching, Routing, and Wireless Essentials",
+      issuer: "Chennai Institute of Technology (Cisco Networking Academy)",
+      issued: "May 2025",
+      category: "Networking",
+      description: "Successfully completed the CCNA: Switching, Routing, and Wireless Essentials course offered by Chennai Institute of Technology through the Cisco Networking Academy program. Gained foundational knowledge of switching, routing, wireless networking, network connectivity, and network configuration.",
+      skills: ["Computer Networking", "Network Switching", "Routing", "Wireless Networking"],
+      certificateFile: "/certificates/CCNA2.pdf"
+    },
+    {
+      id: "cyberops-associate",
+      title: "CyberOps Associate",
+      issuer: "Cisco Networking Academy",
+      issued: "February 2025",
+      category: "Cybersecurity",
+      description: "Successfully completed the CyberOps Associate course through the Cisco Networking Academy program. This credential supports learning in cybersecurity operations and strengthens understanding of security monitoring, cyber threat awareness, and security incident detection.",
+      skills: ["Cybersecurity", "Security Operations", "Threat Detection", "Security Monitoring", "Incident Response"],
+      certificateFile: "/certificates/CyberOps Associate.pdf"
+    },
+    // I. Cisco Networking Academy — Additional Credentials
+    {
+      id: "networking-essentials-cisco",
       title: "Networking Essentials",
       issuer: "Cisco Networking Academy",
-      date: "May 2024",
-      badgeText: "Verified Credential",
-      credentialId: "CISCO-NET-ESS-132471",
-      skillsCovered: ["TCP/IP & OSI Model", "IP Addressing & Subnetting", "Routing Fundamentals", "Network Security", "Packet Analysis"],
-      description: "Foundational networking qualification covering internet protocols, local area networks, transport layer sockets, subnet design, packet routing, and network defense strategies essential for distributed backend engineering.",
-      verificationNote: "Issued directly by Cisco Networking Academy upon practical laboratory and exam completion."
+      issued: "May 2024",
+      category: "Networking",
+      description: "Successfully completed the Networking Essentials course through the Cisco Networking Academy program. Developed foundational knowledge of computer networking, network connectivity, networking devices, and basic network configuration concepts.",
+      skills: ["Computer Networking", "Network Fundamentals", "Network Connectivity", "Networking Devices"],
+      certificateFile: "/certificates/Networking Essentials.pdf"
     },
     {
-      id: "worldquant-applied-data-science",
+      id: "ccnav7-intro-networks",
+      title: "Introduction to Networks (CCNAv7)",
+      issuer: "Cisco Networking Academy",
+      issued: "May 2023",
+      category: "Networking",
+      description: "Successfully completed the CCNAv7: Introduction to Networks course through the Cisco Networking Academy program. Developed foundational knowledge of computer networking concepts, network communication, network protocols, IP addressing, and network device configuration.",
+      skills: ["Computer Networking", "Network Protocols", "IP Addressing", "Cisco Networking"],
+      certificateFile: "/certificates/CCNAv7 Introduction to Networks.pdf"
+    },
+    {
+      id: "cybersecurity-essentials-cisco",
+      title: "Cybersecurity Essentials",
+      issuer: "Cisco Networking Academy",
+      issued: "February 2023",
+      category: "Cybersecurity",
+      description: "Successfully completed the Cybersecurity Essentials course offered through the Cisco Networking Academy program. Gained foundational knowledge of cybersecurity principles, cyber threats, security risks, and methods for protecting digital systems and information.",
+      skills: ["Cybersecurity", "Information Security", "Security Fundamentals"],
+      certificateFile: "/certificates/Cybersecurity Essentials.pdf"
+    },
+    {
+      id: "intro-cybersecurity-cisco-2023",
+      title: "Introduction to Cybersecurity",
+      issuer: "Cisco Networking Academy",
+      issued: "January 2023",
+      category: "Cybersecurity",
+      description: "Successfully completed the Introduction to Cybersecurity course through the Cisco Networking Academy program. Gained foundational knowledge of cybersecurity concepts, common cyber threats, online security, and the importance of protecting digital information and systems.",
+      skills: ["Cybersecurity", "Network Security", "Online Safety", "Security Fundamentals"],
+      certificateFile: "/certificates/Introduction to Cybersecurity1.pdf"
+    },
+    // J. Applied Data Science
+    {
+      id: "applied-data-science-lab-wqu",
       title: "Applied Data Science Lab",
       issuer: "WorldQuant University",
-      date: "June 2025",
-      badgeText: "Professional Lab Badge",
-      credentialId: "WQU-ADSL-2025-06",
-      skillsCovered: ["Exploratory Data Analysis", "Predictive Modeling", "Supervised & Unsupervised Learning", "SQL & Database Queries", "Data Visualization"],
-      description: "Practical engineering lab solving real-world data science problems across housing price prediction, customer segmentation, earthquake damage modeling, and economic forecasting using Python data science ecosystems.",
-      verificationNote: "Awarded by WorldQuant University upon rigorous code submission and peer-reviewed project delivery."
+      issued: "June 2025",
+      category: "Mathematics and Data Science",
+      description: "Successfully completed the Applied Data Science Lab certification offered by WorldQuant University, working on end-to-end practical data science projects covering exploratory data analysis, machine learning modeling, and real-world data pipelines.",
+      skills: ["Data Science", "Machine Learning", "Exploratory Data Analysis", "Predictive Modeling"],
+      certificateFile: "/certificates/AppliedDataScienceLab.pdf"
     }
   ] as Certification[]
 };

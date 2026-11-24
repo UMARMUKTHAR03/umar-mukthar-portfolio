@@ -3,12 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Skills } from './components/Skills';
-import { Projects } from './components/Projects';
-import { Experience } from './components/Experience';
-import { Certifications } from './components/Certifications';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { AboutPage } from './pages/AboutPage';
+import { ExperiencePage } from './pages/ExperiencePage';
+import { CertificationsPage } from './pages/CertificationsPage';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { ExperienceDetail } from './pages/ExperienceDetail';
 import { CertificationDetail } from './pages/CertificationDetail';
@@ -16,17 +14,7 @@ import { CertificationDetail } from './pages/CertificationDetail';
 const HomePage: React.FC = () => {
   return (
     <main id="main-content">
-      {/* 01 — INTRODUCTION: Bio, verified details, core skills & competitive coding */}
       <Hero />
-      <Skills />
-
-      {/* 02 — SELECTED WORK & EXPERIENCE: Real screenshots, architectures, career timeline */}
-      <Projects />
-      <Experience />
-
-      {/* 03 — CREDENTIALS & CONTACT: Education, industry certifications, direct form */}
-      <Certifications />
-      <Contact />
     </main>
   );
 };
@@ -48,6 +36,9 @@ export const App: React.FC = () => {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="/experience/:id" element={<ExperienceDetail />} />
             <Route path="/certification/:id" element={<CertificationDetail />} />

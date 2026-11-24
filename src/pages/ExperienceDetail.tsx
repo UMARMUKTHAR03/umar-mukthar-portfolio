@@ -5,7 +5,9 @@ import {
   Calendar, 
   MapPin, 
   Briefcase, 
-  CheckCircle2
+  CheckCircle2,
+  FileText,
+  ArrowUpRight
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 
@@ -29,11 +31,11 @@ export const ExperienceDetail: React.FC = () => {
             The experience record could not be found.
           </p>
           <button
-            onClick={() => navigate('/#experience')}
-            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate('/experience')}
+            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer font-mono"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Return to Portfolio</span>
+            <span>Return to Experience</span>
           </button>
         </div>
       </main>
@@ -47,7 +49,7 @@ export const ExperienceDetail: React.FC = () => {
         {/* Back Link */}
         <div>
           <button
-            onClick={() => navigate('/#experience')}
+            onClick={() => navigate('/experience')}
             className="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2 cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -117,30 +119,6 @@ export const ExperienceDetail: React.FC = () => {
           </div>
         </section>
 
-        {/* Achievements */}
-        {exp.achievements && exp.achievements.length > 0 && (
-          <section className="space-y-3 pt-2">
-            <h2 className="text-xs font-mono eyebrow text-[var(--text-muted)]">
-              KEY MEASURABLE OUTCOMES
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {exp.achievements.map((ach, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] space-y-1"
-                >
-                  <span className="text-xs font-mono font-semibold text-[var(--accent)]">
-                    0{idx + 1}
-                  </span>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
-                    {ach}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* Tech Stack */}
         <section className="space-y-3 pt-4 border-t border-[var(--border-color)]">
           <h2 className="text-xs font-mono eyebrow text-[var(--text-muted)]">
@@ -158,11 +136,22 @@ export const ExperienceDetail: React.FC = () => {
           </div>
         </section>
 
-        {/* Certificate Proof Note */}
-        {exp.certificateProofNote && (
-          <div className="p-4 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs text-[var(--text-muted)] font-mono">
-            <strong>Verification Note: </strong>
-            {exp.certificateProofNote}
+        {/* Certificate Proof */}
+        {exp.certificateFile && (
+          <div className="p-4 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex items-center justify-between">
+            <span className="text-xs font-mono text-[var(--text-muted)]">
+              Completion Certificate on Record
+            </span>
+            <a
+              href={exp.certificateFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[var(--accent)] hover:underline"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>View Certificate (PDF)</span>
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
           </div>
         )}
 

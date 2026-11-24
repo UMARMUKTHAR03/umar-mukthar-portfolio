@@ -6,7 +6,8 @@ import {
   CheckCircle2, 
   AlertTriangle, 
   Lightbulb, 
-  FolderGit2
+  FolderGit2,
+  Layers
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { GithubIcon } from '../components/Icons';
@@ -32,7 +33,7 @@ export const ProjectDetail: React.FC = () => {
           </p>
           <button
             onClick={() => navigate('/#work')}
-            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer"
+            className="px-5 py-2.5 rounded bg-[var(--text-primary)] text-[var(--bg-page)] font-medium text-xs hover:opacity-90 inline-flex items-center gap-2 cursor-pointer font-mono"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to Portfolio</span>
@@ -169,11 +170,25 @@ export const ProjectDetail: React.FC = () => {
           </div>
         </div>
 
-        {/* Architecture Overview */}
-        <section className="space-y-3 pt-4">
-          <h2 className="text-xs font-mono eyebrow text-[var(--text-muted)]">
-            SYSTEM ARCHITECTURE & WORKFLOW
-          </h2>
+        {/* Architecture Overview & Optional Architecture Image */}
+        <section className="space-y-4 pt-4">
+          <div className="flex items-center gap-2">
+            <Layers className="w-4 h-4 text-[var(--accent)]" />
+            <h2 className="text-xs font-mono eyebrow text-[var(--text-muted)]">
+              SYSTEM ARCHITECTURE & WORKFLOW
+            </h2>
+          </div>
+
+          {project.architectureImage && (
+            <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] p-4 flex items-center justify-center">
+              <img
+                src={project.architectureImage}
+                alt={`${project.title} Architecture Diagram`}
+                className="max-h-80 w-auto object-contain"
+              />
+            </div>
+          )}
+
           <div className="p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
             {project.architectureOverview}
           </div>
