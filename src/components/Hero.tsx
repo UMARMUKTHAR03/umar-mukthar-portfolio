@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { 
   ArrowRight, 
-  Terminal, 
-  Sparkles, 
+  MapPin, 
+  Download, 
   Copy, 
   Check, 
-  MapPin,
-  Flame,
-  Download,
+  ExternalLink, 
+  ShieldCheck, 
+  GraduationCap, 
   Info,
   X
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { LinkedinIcon } from './Icons';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 
 export const Hero: React.FC = () => {
@@ -37,86 +37,89 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" aria-label="Introduction">
-      {/* Background radial glow */}
+    <section id="introduction" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" aria-label="Introduction">
+      {/* Background ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-indigo-500/5 blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Main Headline & Pitch (7 cols) */}
+          {/* Left Column: Clear, Professional Identity & Pitch (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Live status badge & Avatar Row */}
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="relative group shrink-0">
-                <img
-                  src={PORTFOLIO_DATA.personal.avatarUrl}
-                  alt="Portrait photo of Umar Mukthar, AI & ML Engineer"
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-500/40 shadow-lg shadow-emerald-500/10 group-hover:border-emerald-400 transition-colors"
-                  loading="eager"
-                />
-                <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#09090b] shadow" title="Available for opportunities" />
-              </div>
-
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-medium tracking-wide">
-                <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span>{PORTFOLIO_DATA.personal.status}</span>
-              </div>
-            </div>
-
-            {/* Name & Headline */}
+            {/* Primary Name & Title */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
-                Hi, I'm <span className="gradient-accent">{PORTFOLIO_DATA.personal.name}</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-100 dark:text-zinc-100 light:text-slate-900 leading-[1.1]">
+                <span className="gradient-accent">{PORTFOLIO_DATA.personal.name}</span>
               </h1>
-              <p className="text-lg sm:text-xl font-medium text-zinc-300 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-amber-400 shrink-0" aria-hidden="true" />
-                <span>AI & Machine Learning Engineer | Python & Full-Stack</span>
+              <p className="text-xl sm:text-2xl font-semibold text-zinc-300 dark:text-zinc-300 light:text-slate-700">
+                {PORTFOLIO_DATA.personal.title}
               </p>
             </div>
 
             {/* Concise Bio */}
-            <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+            <p className="text-zinc-400 dark:text-zinc-400 light:text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
               {PORTFOLIO_DATA.personal.shortBio}
             </p>
 
-            {/* Quick Metrics Bar */}
+            {/* Location & Academic Base (Displays Tamil Nadu, India as requested) */}
+            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-zinc-400 dark:text-zinc-400 light:text-slate-500 font-medium">
+              <span className="inline-flex items-center gap-1.5 text-emerald-400 dark:text-emerald-400 light:text-emerald-600">
+                <MapPin className="w-4 h-4 shrink-0" aria-hidden="true" />
+                {PORTFOLIO_DATA.personal.location}
+              </span>
+              <span>•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 shrink-0 text-cyan-400" aria-hidden="true" />
+                Chennai Institute of Technology (2022–2026)
+              </span>
+            </div>
+
+            {/* Key Verified Performance Metrics */}
             <div className="grid grid-cols-3 gap-3 py-2 max-w-lg">
-              <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                <div className="text-xl sm:text-2xl font-bold font-mono text-emerald-400">8.54</div>
-                <div className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold">B.E. AIML CGPA</div>
+              <div className="p-3.5 rounded-2xl glow-card">
+                <div className="text-xl sm:text-2xl font-bold font-mono text-emerald-400 dark:text-emerald-400 light:text-emerald-600">
+                  {PORTFOLIO_DATA.personal.education.cgpa.split(' ')[0]}
+                </div>
+                <div className="text-[11px] text-zinc-400 dark:text-zinc-400 light:text-slate-500 uppercase tracking-wider font-semibold">
+                  B.E. AIML CGPA
+                </div>
               </div>
-              <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                <div className="text-xl sm:text-2xl font-bold font-mono text-cyan-400">800+</div>
-                <div className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold">Problems Solved</div>
+
+              <div className="p-3.5 rounded-2xl glow-card">
+                <div className="text-xl sm:text-2xl font-bold font-mono text-cyan-400 dark:text-cyan-400 light:text-cyan-600">
+                  800+
+                </div>
+                <div className="text-[11px] text-zinc-400 dark:text-zinc-400 light:text-slate-500 uppercase tracking-wider font-semibold">
+                  Problems Solved
+                </div>
               </div>
-              <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                <div className="text-xl sm:text-2xl font-bold font-mono text-amber-400">95.29%</div>
-                <div className="text-[11px] text-zinc-400 uppercase tracking-wider font-semibold">Churn Holdout Acc</div>
+
+              <div className="p-3.5 rounded-2xl glow-card">
+                <div className="text-xl sm:text-2xl font-bold font-mono text-amber-400 dark:text-amber-400 light:text-amber-600">
+                  95.29%
+                </div>
+                <div className="text-[11px] text-zinc-400 dark:text-zinc-400 light:text-slate-500 uppercase tracking-wider font-semibold">
+                  Model Accuracy
+                </div>
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* Call to Actions */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-zinc-950 bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 transition-all shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-zinc-950 dark:text-zinc-950 light:text-white bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 dark:from-emerald-400 dark:to-cyan-400 light:from-emerald-600 light:to-teal-600 transition-all shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-400"
               >
-                <span>Featured Projects</span>
+                <span>View Projects</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </a>
 
               <button
                 onClick={handleResumeClick}
                 type="button"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-zinc-100 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 hover:border-zinc-500 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                aria-label="Download or request Umar Mukthar resume"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-zinc-100 dark:text-zinc-100 light:text-slate-800 bg-zinc-900 dark:bg-zinc-900 light:bg-slate-100 hover:bg-zinc-800 dark:hover:bg-zinc-800 light:hover:bg-slate-200 border border-zinc-700/80 dark:border-zinc-700/80 light:border-slate-300 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                aria-label="View or request Umar Mukthar resume"
               >
                 <Download className="w-4 h-4 text-emerald-400" aria-hidden="true" />
                 <span>Resume</span>
@@ -126,7 +129,7 @@ export const Hero: React.FC = () => {
                 onClick={copyEmail}
                 type="button"
                 aria-label="Copy email address"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/80 hover:border-zinc-500 hover:bg-zinc-800/80 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 dark:text-zinc-200 light:text-slate-700 bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-slate-100 border border-zinc-700/80 dark:border-zinc-700/80 light:border-slate-300 hover:border-zinc-500 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
               >
                 {copied ? (
                   <>
@@ -140,108 +143,121 @@ export const Hero: React.FC = () => {
                   </>
                 )}
               </button>
+            </div>
 
+          </div>
+
+          {/* Right Column: Clean Professional LinkedIn Profile Card (Replaces old Terminal/Code block) */}
+          <div className="lg:col-span-5">
+            <div className="glow-card rounded-3xl p-6 sm:p-8 border border-zinc-800 dark:border-zinc-800 light:border-slate-200 shadow-xl space-y-6">
+              
+              {/* Profile Card Header with Verified Badge */}
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    <img
+                      src={PORTFOLIO_DATA.personal.avatarUrl}
+                      alt="Umar Mukthar Profile Portrait"
+                      width={72}
+                      height={72}
+                      className="w-18 h-18 rounded-2xl object-cover border-2 border-emerald-500/50 shadow-md"
+                      loading="eager"
+                    />
+                    <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-blue-600 text-white shadow" title="Verified LinkedIn Profile">
+                      <LinkedinIcon className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-zinc-100 dark:text-zinc-100 light:text-slate-900 flex items-center gap-1.5">
+                      <span>{PORTFOLIO_DATA.personal.name}</span>
+                      <span title="Verified Profile" className="inline-flex items-center">
+                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                      </span>
+                    </h2>
+                    <p className="text-xs text-zinc-400 dark:text-zinc-400 light:text-slate-500 font-medium">
+                      AI & Machine Learning Engineer
+                    </p>
+                    <p className="text-[11px] text-zinc-400 dark:text-zinc-400 light:text-slate-500 font-mono mt-0.5">
+                      Chennai Institute of Technology
+                    </p>
+                  </div>
+                </div>
+
+                <a
+                  href={PORTFOLIO_DATA.personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl border border-zinc-700/80 dark:border-zinc-800 light:border-slate-200 bg-zinc-900/60 dark:bg-zinc-900/60 light:bg-slate-100 text-cyan-400 hover:text-white hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  aria-label="Open LinkedIn Profile (in new tab)"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+
+              {/* Core Pillars / Focus Area Tags */}
+              <div className="space-y-2">
+                <div className="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-400 light:text-slate-500 font-mono">
+                  Core Engineering Specialties
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 dark:text-emerald-400 light:text-emerald-700">
+                    Deep Learning & PyTorch
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 dark:text-cyan-400 light:text-cyan-700">
+                    Hybrid RAG Document Engines
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-500/10 border border-purple-500/25 text-purple-400 dark:text-purple-400 light:text-purple-700">
+                    FastAPI & Full-Stack APIs
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 border border-amber-500/25 text-amber-400 dark:text-amber-400 light:text-amber-700">
+                    Computer Vision (MobileNet)
+                  </span>
+                </div>
+              </div>
+
+              {/* Competitive Handles Highlight */}
+              <div className="pt-3 border-t border-zinc-800 dark:border-zinc-800 light:border-slate-200 grid grid-cols-3 gap-2 text-center">
+                <a
+                  href={PORTFOLIO_DATA.codingProfiles[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-slate-50 border border-zinc-800/80 dark:border-zinc-800 light:border-slate-200 hover:border-emerald-500 transition-colors"
+                >
+                  <div className="text-sm font-bold font-mono text-emerald-400">800+</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">LeetCode</div>
+                </a>
+                <a
+                  href={PORTFOLIO_DATA.codingProfiles[1].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-slate-50 border border-zinc-800/80 dark:border-zinc-800 light:border-slate-200 hover:border-cyan-500 transition-colors"
+                >
+                  <div className="text-sm font-bold font-mono text-cyan-400">1004+</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">CodeChef</div>
+                </a>
+                <a
+                  href={PORTFOLIO_DATA.codingProfiles[2].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-slate-50 border border-zinc-800/80 dark:border-zinc-800 light:border-slate-200 hover:border-purple-500 transition-colors"
+                >
+                  <div className="text-sm font-bold font-mono text-purple-400">847</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Codeforces</div>
+                </a>
+              </div>
+
+              {/* Direct LinkedIn Profile Connection Button */}
               <a
                 href={PORTFOLIO_DATA.personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                aria-label="LinkedIn profile (opens in new tab)"
+                className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0a66c2] hover:bg-[#004182] transition-colors flex items-center justify-center gap-2 shadow-md shadow-blue-500/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                <LinkedinIcon className="w-5 h-5 text-cyan-400" />
+                <LinkedinIcon className="w-4 h-4" />
+                <span>Connect on LinkedIn</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
 
-              <a
-                href={PORTFOLIO_DATA.personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                aria-label="GitHub profile (opens in new tab)"
-              >
-                <GithubIcon className="w-5 h-5 text-emerald-400" />
-              </a>
-            </div>
-
-            {/* Location & Alma Mater */}
-            <div className="flex items-center gap-4 text-xs text-zinc-400 pt-1">
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-zinc-400" aria-hidden="true" />
-                {PORTFOLIO_DATA.personal.location}
-              </span>
-              <span>•</span>
-              <span className="text-zinc-400">Chennai Institute of Technology (2022–2026)</span>
-            </div>
-          </div>
-
-          {/* Interactive Code / Terminal Card (5 cols) */}
-          <div className="lg:col-span-5">
-            <div className="glow-card rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
-              {/* Terminal Window Header */}
-              <div className="flex items-center justify-between px-4 py-3 bg-zinc-950/80 border-b border-zinc-800">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                  <span className="ml-2 font-mono text-xs text-zinc-400 flex items-center gap-1">
-                    <Terminal className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
-                    umar@engineer: ~/profile
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
-                  <Flame className="w-3.5 h-3.5 text-amber-500" aria-hidden="true" />
-                  <span>Python 3.11 • PyTorch</span>
-                </div>
-              </div>
-
-              {/* Terminal Content */}
-              <div className="p-5 font-mono text-xs sm:text-sm text-zinc-300 space-y-3 bg-[#0d0e12]/90 leading-relaxed overflow-x-auto">
-                <div className="text-zinc-400">
-                  <span className="text-emerald-400">const</span> <span className="text-cyan-300">engineer</span> = &#123;
-                </div>
-                <div className="pl-4 space-y-1">
-                  <div>
-                    <span className="text-zinc-400">name:</span> <span className="text-amber-300">"{PORTFOLIO_DATA.personal.name}"</span>,
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">education:</span> <span className="text-amber-300">"B.E. AIML @ Chennai Inst of Tech"</span>,
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">cgpa:</span> <span className="text-emerald-400">8.54</span>,
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">coreSpecialties:</span> [
-                    <span className="text-cyan-300">"Deep Learning"</span>, 
-                    <span className="text-cyan-300">"Hybrid RAG"</span>, 
-                    <span className="text-cyan-300">"Full-Stack APIs"</span>
-                    ],
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">activeBackbones:</span> [
-                    <span className="text-emerald-300">"BiLSTM (3.2M params)"</span>, 
-                    <span className="text-emerald-300">"MobileNetV3-Small"</span>,
-                    <span className="text-emerald-300">"Gradient Boosted Ensembles"</span>
-                    ],
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">leetcodeSolved:</span> <span className="text-emerald-400">800</span>,
-                  </div>
-                  <div>
-                    <span className="text-zinc-400">openToOpportunities:</span> <span className="text-purple-400">true</span>
-                  </div>
-                </div>
-                <div className="text-zinc-400">&#125;;</div>
-
-                {/* Simulated Command prompt */}
-                <div className="pt-3 border-t border-zinc-800/80 flex items-center gap-2 text-zinc-400 text-xs">
-                  <span className="text-emerald-400">➜</span>
-                  <span className="text-cyan-400">~/profile</span>
-                  <span className="text-zinc-200">umar.verifyCredentials()</span>
-                  <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse ml-1" />
-                </div>
-                <div className="text-[11px] text-zinc-400 italic">
-                  &gt; [SUCCESS]: NPTEL Computer Vision, Coursera DL, Cisco Networking verified.
-                </div>
-              </div>
             </div>
           </div>
 
@@ -250,12 +266,12 @@ export const Hero: React.FC = () => {
 
       {/* Resume Request Modal */}
       {showResumeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
-          <div className="glow-card max-w-md w-full rounded-2xl p-6 border border-zinc-800 bg-[#0d0e12] space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+          <div className="glow-card max-w-md w-full rounded-2xl p-6 border border-zinc-800 bg-[#0d0e12] dark:bg-[#0d0e12] light:bg-white space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-emerald-400">
                 <Info className="w-5 h-5" />
-                <h3 id="resume-modal-title" className="font-bold text-white text-lg">Resume Document</h3>
+                <h3 id="resume-modal-title" className="font-bold text-zinc-100 dark:text-zinc-100 light:text-slate-900 text-lg">Resume Document</h3>
               </div>
               <button
                 onClick={() => setShowResumeModal(false)}
@@ -267,13 +283,12 @@ export const Hero: React.FC = () => {
               </button>
             </div>
 
-            <p className="text-sm text-zinc-300 leading-relaxed">
+            <p className="text-sm text-zinc-300 dark:text-zinc-300 light:text-slate-600 leading-relaxed">
               To request a direct copy of Umar Mukthar's official resume PDF, please reach out via direct email or connect on LinkedIn.
             </p>
 
-            <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 font-mono">
+            <div className="p-3 rounded-xl bg-zinc-900 dark:bg-zinc-900 light:bg-slate-100 border border-zinc-800 dark:border-zinc-800 light:border-slate-200 text-xs text-zinc-400 dark:text-zinc-400 light:text-slate-600 font-mono">
               <div>Email: {PORTFOLIO_DATA.personal.email}</div>
-              <div className="mt-1">Notice: Place <code className="text-emerald-400">Umar_Mukthar_Resume.pdf</code> in <code className="text-zinc-200">/public</code> to enable instant direct downloads.</div>
             </div>
 
             <div className="flex items-center justify-end gap-3 pt-2">
