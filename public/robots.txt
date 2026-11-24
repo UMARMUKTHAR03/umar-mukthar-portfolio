@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://umarom.com/sitemap.xml
+Sitemap: https://umar-mukthar.is-a.dev/sitemap.xml

@@ -52,7 +52,7 @@ export const PORTFOLIO_DATA = {
     email: "umarom98425@gmail.com",
     github: "https://github.com/UMARMUKTHAR03",
     linkedin: "https://www.linkedin.com/in/umarmukthar03/",
-    domain: "https://umarom.com",
+    domain: "https://umar-mukthar.is-a.dev",
     avatarUrl: "/avatar.jpg",
     hasResumeFile: false, // Flag indicating whether Umar_Mukthar_Resume.pdf exists in /public
     education: {
