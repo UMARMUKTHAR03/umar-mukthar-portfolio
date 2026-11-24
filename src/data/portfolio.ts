@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   category: 'AI / ML' | 'Full-Stack' | 'Computer Vision' | 'Python & Systems';
   featured: boolean;
+  image?: string;
   metrics: { label: string; value: string; condition?: string }[];
   tags: string[];
   githubUrl: string;
@@ -210,6 +211,7 @@ export const PORTFOLIO_DATA = {
       subtitle: "Custom 3.2M-Parameter BiLSTM Sequence Model & Low-Latency CPU Inference",
       category: "AI / ML",
       featured: true,
+      image: "/projects/predictive-dashboard.png",
       description: "A production-grade language platform featuring a custom 3.2M-parameter Bidirectional LSTM neural network trained on authentic Medium technical publications. Features a leak-free title-split evaluation and sub-5ms CPU forward-pass latency.",
       metrics: [
         { label: "Model Architecture", value: "3.2M-Param BiLSTM", condition: "100d Embed -> 150u BiLSTM -> Linear" },
@@ -258,6 +260,7 @@ export const PORTFOLIO_DATA = {
       subtitle: "Session-Isolated Hybrid Retrieval Engine & Multi-Format Document Grounding",
       category: "AI / ML",
       featured: true,
+      image: "/projects/rag-dashboard.png",
       description: "Enterprise knowledge assistant unifying PDF, DOCX, XLSX, and audio inputs with strict factual grounding. Combines 128-dimensional dense semantic hash vectors with BM25 lexical keyword scoring for sub-millisecond retrieval.",
       metrics: [
         { label: "Retrieval Latency", value: "0.27ms avg", condition: "Evaluated in-memory hybrid search" },
@@ -306,6 +309,7 @@ export const PORTFOLIO_DATA = {
       subtitle: "PyTorch MobileNetV3-Small Classifier with Grad-CAM Saliency Heatmaps",
       category: "Computer Vision",
       featured: true,
+      image: "/projects/vision-prediction.png",
       description: "Deep learning computer vision platform engineered with PyTorch MobileNetV3-Small for ImageNet-1K (1,000 object classes) classification, paired with Grad-CAM activation mapping for visual decision transparency.",
       metrics: [
         { label: "Model Architecture", value: "MobileNetV3-Small", condition: "Pretrained ImageNet-1K weights" },
@@ -401,7 +405,8 @@ export const PORTFOLIO_DATA = {
       title: "FraudGuard AI — Financial Fraud Detection",
       subtitle: "Calibrated Decision Support Prototype with SHAP TreeExplainer",
       category: "AI / ML",
-      featured: false,
+      featured: true,
+      image: "/projects/fraud-dashboard.png",
       description: "A financial fraud detection decision-support prototype pairing an XGBoost champion classifier with SHAP feature explainability, risk tier thresholds, and CSV batch scoring.",
       metrics: [
         { label: "Benchmark Accuracy", value: "99.04%", condition: "Measured on 8,000 holdout records of calibrated 40k benchmark" },
@@ -449,7 +454,8 @@ export const PORTFOLIO_DATA = {
       title: "ChurnIQ — Customer Churn Retention Platform",
       subtitle: "Explainable Machine Learning with Counterfactual What-If Simulator",
       category: "AI / ML",
-      featured: false,
+      featured: true,
+      image: "/projects/churn-dashboard.png",
       description: "An explainable customer attrition analytics platform utilizing benchmarked Gradient Boosting models trained with zero data leakage, paired with SHAP explainability and What-If simulation.",
       metrics: [
         { label: "Holdout Accuracy", value: "95.29%", condition: "Benchmarked Gradient Boosting classifier" },
