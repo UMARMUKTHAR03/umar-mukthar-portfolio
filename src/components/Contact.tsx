@@ -59,7 +59,7 @@ export const ContactSection: React.FC = () => {
 
     // If no external backend / Formspree / Web3Forms endpoint is configured:
     if (!formEndpoint) {
-      // Direct users genuinely via mailto fallback rather than showing a fake success
+      // Open draft in default email client with pre-filled content
       const mailtoUrl = `mailto:${PORTFOLIO_DATA.personal.email}?subject=${encodeURIComponent(
         formData.subject ? `[Portfolio] ${formData.subject}` : `[Portfolio] Message from ${formData.name}`
       )}&body=${encodeURIComponent(
@@ -95,7 +95,7 @@ export const ContactSection: React.FC = () => {
         );
       }
 
-      // Verified successful response
+      // Verified successful service acceptance
       setStatus('success');
       confetti({
         particleCount: 80,
@@ -107,7 +107,7 @@ export const ContactSection: React.FC = () => {
       setErrors({});
     } catch (err: unknown) {
       setStatus('error');
-      const msg = err instanceof Error ? err.message : 'An unexpected error occurred while delivering your message.';
+      const msg = err instanceof Error ? err.message : 'An unexpected error occurred while transmitting your message.';
       setErrorMessage(`${msg} Please use the direct email link or copy the address below.`);
     }
   };
@@ -245,7 +245,7 @@ export const ContactSection: React.FC = () => {
               {!formEndpoint && (
                 <div className="mb-5 p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-xs text-zinc-400 leading-relaxed">
                   <span className="font-semibold text-zinc-200">Notice: </span>
-                  Submitting this form prepares a pre-filled draft directly in your preferred email client to guarantee direct delivery without intermediary downtime.
+                  Submitting opens a pre-filled draft directly in your default email application for direct sending.
                 </div>
               )}
 
@@ -254,9 +254,9 @@ export const ContactSection: React.FC = () => {
                   <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                     <Check className="w-7 h-7" aria-hidden="true" />
                   </div>
-                  <h4 className="text-xl font-bold text-white">Message Delivered Successfully!</h4>
+                  <h4 className="text-xl font-bold text-white">Message Transmitted!</h4>
                   <p className="text-sm text-zinc-400 max-w-md mx-auto">
-                    Thank you for reaching out. Your message has been confirmed by the delivery service, and I will reply as soon as possible.
+                    Your message was accepted by the submission service. I will review it and reply to your email address as soon as possible.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}

@@ -29,13 +29,13 @@ export const ProjectsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12" role="tablist" aria-label="Filter projects by category">
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12" role="group" aria-label="Filter projects by category">
           {categories.map((cat) => (
             <button
               key={cat}
-              role="tab"
-              aria-selected={selectedCategory === cat}
+              type="button"
+              aria-pressed={selectedCategory === cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400 ${
                 selectedCategory === cat

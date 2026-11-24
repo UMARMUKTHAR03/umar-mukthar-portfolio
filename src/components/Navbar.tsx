@@ -94,6 +94,7 @@ export const Navbar: React.FC = () => {
               className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800/60 focus:outline-none focus:ring-2 focus:ring-emerald-400"
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -103,7 +104,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0c0d12]/95 border-b border-zinc-800 backdrop-blur-xl px-4 pt-2 pb-6 space-y-2">
+        <div id="mobile-nav-menu" className="md:hidden bg-[#0c0d12]/95 border-b border-zinc-800 backdrop-blur-xl px-4 pt-2 pb-6 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
