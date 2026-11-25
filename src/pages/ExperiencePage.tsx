@@ -8,6 +8,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolio';
+import { GetInTouch } from '../components/GetInTouch';
 
 export const ExperiencePage: React.FC = () => {
   useEffect(() => {
@@ -15,7 +16,7 @@ export const ExperiencePage: React.FC = () => {
   }, []);
 
   return (
-    <main className="min-h-screen pt-28 pb-24 bg-[var(--bg-page)] text-[var(--text-primary)]">
+    <main className="min-h-screen pt-28 pb-0 bg-[var(--bg-page)] text-[var(--text-primary)]">
       <div className="max-w-5xl mx-auto px-5 sm:px-8 space-y-16">
         
         {/* Header Block */}
@@ -125,6 +126,9 @@ export const ExperiencePage: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Get In Touch */}
+      <GetInTouch />
     </main>
   );
 };

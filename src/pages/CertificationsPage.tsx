@@ -7,6 +7,7 @@ import {
   Search
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolio';
+import { GetInTouch } from '../components/GetInTouch';
 
 export const CertificationsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -38,14 +39,14 @@ export const CertificationsPage: React.FC = () => {
   });
 
   return (
-    <main className="min-h-screen pt-28 pb-24 bg-[var(--bg-page)] text-[var(--text-primary)]">
+    <main className="min-h-screen pt-28 pb-0 bg-[var(--bg-page)] text-[var(--text-primary)]">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 space-y-12">
         
         {/* Header Block */}
         <div className="space-y-3 pb-8 border-b border-[var(--border-color)]">
           <p className="eyebrow text-[var(--accent)]">CREDENTIAL REGISTRY</p>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-            Certifications & Course Credentials
+            Certifications & Credentials
           </h1>
           <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-2xl">
             A verified inventory of 39 professional specializations, course completions, and technical credentials from Coursera, DeepLearning.AI, IBM, AWS, and Cisco Networking Academy.
@@ -165,6 +166,9 @@ export const CertificationsPage: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Get In Touch */}
+      <GetInTouch />
     </main>
   );
 };

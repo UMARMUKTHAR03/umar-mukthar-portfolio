@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
     { label: 'About', href: '/about' },
     { label: 'Work', href: '/#work' },
     { label: 'Experience', href: '/experience' },
-    { label: 'Background', href: '/certifications' },
+    { label: 'Credentials', href: '/certifications' },
   ];
 
   const isActive = (href: string) => {

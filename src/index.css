@@ -131,6 +131,61 @@ html.reduce-motion-all .ticker-track {
   border-color: var(--accent);
 }
 
+/* Hero Intro Reveal Animation */
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translate3d(0, 16px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-reveal-1 { animation-delay: 0.1s; }
+.hero-reveal-2 { animation-delay: 0.25s; }
+.hero-reveal-3 { animation-delay: 0.4s; }
+.hero-reveal-4 { animation-delay: 0.3s; }
+
+.hero-avatar {
+  animation: hero-scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+/* Respect prefers-reduced-motion for hero */
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal,
+  .hero-avatar {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+html.reduce-motion-all .hero-reveal,
+html.reduce-motion-all .hero-avatar {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* Accessible focus ring */
 :focus-visible {
   outline: 2px solid var(--accent);
