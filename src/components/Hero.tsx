@@ -10,14 +10,13 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { PORTFOLIO_DATA, type Project, type Experience, type Certification } from '../data/portfolio';
-import { Projects } from './Projects';
 import { GetInTouch } from './GetInTouch';
 import { GithubIcon } from './Icons';
 
 /* ---- Curated homepage selections ---- */
 const FEATURED_PROJECT_IDS = ['predictive-text-generator', 'bazaarflow-luxe'];
 const FEATURED_EXPERIENCE_IDS = ['aicte-eduskills-intern', 'cognifyz-web-intern'];
-const FEATURED_CERT_IDS = ['deep-learning-specialization', 'google-ai-essentials', 'aws-cloud-solutions-architect'];
+const FEATURED_CERT_IDS = ['deep-learning-specialization', 'aws-cloud-solutions-architect'];
 
 const featuredProjects: Project[] = PORTFOLIO_DATA.projects.filter(p => FEATURED_PROJECT_IDS.includes(p.id));
 const featuredExperiences: Experience[] = PORTFOLIO_DATA.experiences.filter(e => FEATURED_EXPERIENCE_IDS.includes(e.id));
@@ -48,13 +47,13 @@ export const Hero: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-3 hero-reveal hero-reveal-3">
-                <a
-                  href="#explore"
+                <Link
+                  to="/work"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--text-primary)] text-[var(--bg-page)] rounded font-medium text-xs font-mono uppercase hover:opacity-90 transition-opacity"
                 >
                   <span>Explore Work</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </Link>
 
                 <Link
                   to="/about"
@@ -139,8 +138,8 @@ export const Hero: React.FC = () => {
               </div>
             </Link>
 
-            <a
-              href="#explore"
+            <Link
+              to="/work"
               className="group py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--bg-surface)] px-4 rounded transition-colors"
             >
               <div className="flex items-center gap-6">
@@ -155,10 +154,10 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--text-primary)]">
-                <span>Scroll to Work</span>
+                <span>View All Projects</span>
                 <ArrowRight className="w-4 h-4 text-[var(--accent)]" />
               </div>
-            </a>
+            </Link>
 
             <Link
               to="/experience"
@@ -221,7 +220,7 @@ export const Hero: React.FC = () => {
                 </h2>
               </div>
               <Link
-                to="/#work"
+                to="/work"
                 className="text-xs font-mono font-semibold text-[var(--accent)] hover:underline hidden sm:flex items-center gap-1"
               >
                 <span>View All Projects</span>
@@ -311,7 +310,7 @@ export const Hero: React.FC = () => {
 
             <div className="sm:hidden text-center">
               <Link
-                to="/#work"
+                to="/work"
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[var(--accent)] hover:underline"
               >
                 <span>View All Projects</span>
@@ -401,24 +400,24 @@ export const Hero: React.FC = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {featuredCerts.map((cert) => (
                 <Link
                   key={cert.id}
                   to={`/certification/${cert.id}`}
-                  className="group p-5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors flex flex-col justify-between space-y-4"
+                  className="group p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <Award className="w-4 h-4 text-[var(--accent)]" />
                       <span className="text-[10px] font-mono text-[var(--text-muted)]">{cert.issued}</span>
                     </div>
-                    <h4 className="text-sm font-bold text-[var(--text-primary)] leading-snug group-hover:text-[var(--accent)] transition-colors">
+                    <h4 className="text-base font-bold text-[var(--text-primary)] leading-snug group-hover:text-[var(--accent)] transition-colors">
                       {cert.title}
                     </h4>
-                    <p className="text-[11px] text-[var(--text-muted)]">{cert.issuer}</p>
+                    <p className="text-xs text-[var(--text-muted)]">{cert.issuer}</p>
                   </div>
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1.5">
                     {cert.skills.slice(0, 3).map((s) => (
                       <span
                         key={s}
@@ -445,9 +444,6 @@ export const Hero: React.FC = () => {
 
         </div>
       </section>
-
-      {/* Embedded Selected Work Section (All Projects) */}
-      <Projects />
 
       {/* Get In Touch */}
       <GetInTouch />

@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { AboutPage } from './pages/AboutPage';
+import { WorkPage } from './pages/WorkPage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { CertificationsPage } from './pages/CertificationsPage';
 import { ProjectDetail } from './pages/ProjectDetail';
@@ -37,6 +38,7 @@ export const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/work" element={<WorkPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/certifications" element={<CertificationsPage />} />
             <Route path="/project/:id" element={<ProjectDetail />} />

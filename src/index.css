@@ -131,42 +131,45 @@ html.reduce-motion-all .ticker-track {
   border-color: var(--accent);
 }
 
-/* Hero Intro Reveal Animation */
+/* Hero Intro Reveal Animation (3D-Style Entrance) */
 @keyframes hero-fade-up {
   0% {
     opacity: 0;
-    transform: translate3d(0, 24px, 0);
+    transform: perspective(1000px) translate3d(0, 36px, -40px) rotateX(8deg);
   }
   100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: perspective(1000px) translate3d(0, 0, 0) rotateX(0deg);
   }
 }
 
 @keyframes hero-scale-in {
   0% {
     opacity: 0;
-    transform: scale(0.95) translate3d(0, 16px, 0);
+    transform: perspective(1000px) translate3d(20px, 30px, -60px) rotateY(-8deg) rotateX(6deg) scale(0.92);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: perspective(1000px) translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg) scale(1);
   }
 }
 
 .hero-reveal {
   opacity: 0;
-  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: hero-fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
 }
 
-.hero-reveal-1 { animation-delay: 0.1s; }
-.hero-reveal-2 { animation-delay: 0.25s; }
-.hero-reveal-3 { animation-delay: 0.4s; }
-.hero-reveal-4 { animation-delay: 0.3s; }
+.hero-reveal-1 { animation-delay: 0.08s; }
+.hero-reveal-2 { animation-delay: 0.22s; }
+.hero-reveal-3 { animation-delay: 0.38s; }
+.hero-reveal-4 { animation-delay: 0.26s; }
 
 .hero-avatar {
-  animation: hero-scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation: hero-scale-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
   opacity: 0;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
 }
 
 /* Respect prefers-reduced-motion for hero */

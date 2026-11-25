@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[var(--text-muted)]">
           <p>© {CURRENT_YEAR} Umar Mukthar. All verified rights reserved.</p>
-          <p>Tamil Nadu, India · Chennai Institute of Technology</p>
+          <p>{PORTFOLIO_DATA.personal.location}</p>
         </div>
 
       </div>

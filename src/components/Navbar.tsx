@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Work', href: '/#work' },
+    { label: 'Work', href: '/work' },
     { label: 'Experience', href: '/experience' },
     { label: 'Credentials', href: '/certifications' },
   ];
