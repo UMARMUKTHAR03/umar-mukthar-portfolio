@@ -170,21 +170,21 @@ export const ProjectDetail: React.FC = () => {
           </div>
         </div>
 
-        {/* Architecture Overview & Optional Architecture Image */}
+        {/* System & Product Overview */}
         <section className="space-y-4 pt-4">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-[var(--accent)]" />
             <h2 className="text-xs font-mono eyebrow text-[var(--text-muted)]">
-              SYSTEM ARCHITECTURE & WORKFLOW
+              {project.id === 'bazaarflow-luxe' ? 'SYSTEM & PRODUCT OVERVIEW' : 'SYSTEM ARCHITECTURE & WORKFLOW'}
             </h2>
           </div>
 
           {project.architectureImage && (
-            <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] p-4 flex items-center justify-center">
+            <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] overflow-hidden">
               <img
                 src={project.architectureImage}
-                alt={`${project.title} Architecture Diagram`}
-                className="max-h-80 w-auto object-contain"
+                alt={`${project.title} Interface & System Overview`}
+                className="w-full object-cover"
               />
             </div>
           )}

@@ -189,6 +189,61 @@ html.reduce-motion-all .hero-avatar {
   transform: none !important;
 }
 
+/* 3D Welcome Overlay Animation */
+.welcome-3d-stage {
+  perspective: 1200px;
+}
+
+@keyframes welcome-3d-reveal {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translate3d(0, 40px, -120px) rotateX(18deg) scale(0.9);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(1200px) translate3d(0, -4px, 15px) rotateX(-2deg) scale(1.02);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes welcome-sub-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-title {
+  animation: welcome-3d-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
+.welcome-subtitle {
+  animation: welcome-sub-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-title,
+  .welcome-subtitle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
 /* Accessible focus ring */
 :focus-visible {
   outline: 2px solid var(--accent);

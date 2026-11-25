@@ -355,7 +355,7 @@ export const PORTFOLIO_DATA = {
       category: "Full-Stack",
       featured: true,
       image: "/projects/bazaarflow-homepage.png",
-      architectureImage: "/projects/bazaarflow-architecture.svg",
+      architectureImage: "/projects/bazaarflow-product-detail.png",
       metrics: [
         { label: "Backend Core", value: "NestJS + PostgreSQL", condition: "TypeORM schema with ACID compliance" },
         { label: "Frontend", value: "Next.js 16 + Tailwind", condition: "App router & server-side rendering" },

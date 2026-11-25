@@ -14,9 +14,9 @@ import { GetInTouch } from './GetInTouch';
 import { GithubIcon } from './Icons';
 
 /* ---- Curated homepage selections ---- */
-const FEATURED_PROJECT_IDS = ['predictive-text-generator', 'bazaarflow-luxe'];
-const FEATURED_EXPERIENCE_IDS = ['aicte-eduskills-intern', 'cognifyz-web-intern'];
-const FEATURED_CERT_IDS = ['deep-learning-specialization', 'aws-cloud-solutions-architect'];
+const FEATURED_PROJECT_IDS = ['rag-ai-chatbot', 'image-recognition-app'];
+const FEATURED_EXPERIENCE_IDS = ['coderscave-python-intern', 'skillvertex-ai-intern'];
+const FEATURED_CERT_IDS = ['applied-data-science-lab-wqu', 'cyberops-associate'];
 
 const featuredProjects: Project[] = PORTFOLIO_DATA.projects.filter(p => FEATURED_PROJECT_IDS.includes(p.id));
 const featuredExperiences: Experience[] = PORTFOLIO_DATA.experiences.filter(e => FEATURED_EXPERIENCE_IDS.includes(e.id));
@@ -109,7 +109,7 @@ export const Hero: React.FC = () => {
             <div>
               <p className="eyebrow text-[var(--accent)] mb-1">DIRECTORY</p>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                Portfolio Index
+                Index
               </h2>
             </div>
             <span className="text-xs font-mono text-[var(--text-muted)] hidden sm:block">04 SECTIONS</span>

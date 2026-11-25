@@ -1,7 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
+import { WelcomeOverlay } from './components/WelcomeOverlay';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { AboutPage } from './pages/AboutPage';
@@ -11,6 +12,18 @@ import { CertificationsPage } from './pages/CertificationsPage';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { ExperienceDetail } from './pages/ExperienceDetail';
 import { CertificationDetail } from './pages/CertificationDetail';
+
+const GLOBAL_PAGE_TITLE = "Umar Mukthar | AI & ML Engineer";
+
+const TitleManager: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = GLOBAL_PAGE_TITLE;
+  }, [location.pathname]);
+
+  return null;
+};
 
 const HomePage: React.FC = () => {
   return (
@@ -24,6 +37,7 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <BrowserRouter>
+        <TitleManager />
         <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-200">
           {/* Accessible Skip Link */}
           <a
@@ -34,6 +48,7 @@ export const App: React.FC = () => {
           </a>
 
           <Navbar />
+          <WelcomeOverlay />
 
           <Routes>
             <Route path="/" element={<HomePage />} />

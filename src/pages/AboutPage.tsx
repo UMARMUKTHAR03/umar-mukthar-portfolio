@@ -206,7 +206,11 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {PORTFOLIO_DATA.certifications.slice(0, 3).map((c) => (
+            {[
+              PORTFOLIO_DATA.certifications.find(c => c.id === 'applied-data-science-lab-wqu'),
+              PORTFOLIO_DATA.certifications.find(c => c.id === 'cyberops-associate'),
+              PORTFOLIO_DATA.certifications.find(c => c.id === 'ccna-enterprise-networking-security-automation'),
+            ].filter((c): c is typeof PORTFOLIO_DATA.certifications[0] => Boolean(c)).map((c) => (
               <Link
                 key={c.id}
                 to={`/certification/${c.id}`}
