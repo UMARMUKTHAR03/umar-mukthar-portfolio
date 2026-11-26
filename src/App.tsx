@@ -13,13 +13,62 @@ import { ProjectDetail } from './pages/ProjectDetail';
 import { ExperienceDetail } from './pages/ExperienceDetail';
 import { CertificationDetail } from './pages/CertificationDetail';
 
-const GLOBAL_PAGE_TITLE = "Umar Mukthar | AI & ML Engineer";
+const BASE_DOMAIN = "https://umar-mukthar.is-a.dev";
 
-const TitleManager: React.FC = () => {
+const ROUTE_TITLES: Record<string, string> = {
+  '/': 'Umar Mukthar | AI & ML Engineer',
+  '/about': 'About Me | Umar Mukthar',
+  '/work': 'Projects & Portfolio | Umar Mukthar',
+  '/experience': 'Experience | Umar Mukthar',
+  '/certifications': 'Certifications | Umar Mukthar',
+};
+
+const DEFAULT_PAGE_TITLE = "Umar Mukthar | AI & ML Engineer";
+
+const HeadManager: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = GLOBAL_PAGE_TITLE;
+    // 1. Enforce route-specific document title
+    const pathname = location.pathname.replace(/\/+$/, '') || '/';
+    document.title = ROUTE_TITLES[pathname] || DEFAULT_PAGE_TITLE;
+
+    // 2. Compute canonical URL
+    const canonicalUrl = pathname === '/' 
+      ? `${BASE_DOMAIN}/` 
+      : `${BASE_DOMAIN}${pathname}`;
+
+    // 3. Ensure exactly ONE <link rel="canonical"> exists
+    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', canonicalUrl);
+
+    // Remove any duplicate canonical links if present
+    const allCanonicals = document.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]');
+    if (allCanonicals.length > 1) {
+      for (let i = 1; i < allCanonicals.length; i++) {
+        allCanonicals[i].remove();
+      }
+    }
+
+    // 4. Update Open Graph og:url
+    let ogUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
+    if (!ogUrlMeta) {
+      ogUrlMeta = document.createElement('meta');
+      ogUrlMeta.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrlMeta);
+    }
+    ogUrlMeta.setAttribute('content', canonicalUrl);
+
+    // 5. Update Twitter twitter:url
+    let twitterUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="twitter:url"]');
+    if (twitterUrlMeta) {
+      twitterUrlMeta.setAttribute('content', canonicalUrl);
+    }
   }, [location.pathname]);
 
   return null;
@@ -37,7 +86,7 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <BrowserRouter>
-        <TitleManager />
+        <HeadManager />
         <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-200">
           {/* Accessible Skip Link */}
           <a
